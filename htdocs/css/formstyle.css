@@ -1,0 +1,64 @@
+/*--general formating--*/
+@import "standard/general.css";
+/*--header--*/
+@import "standard/header.css";
+/*-- navigation--*/
+@import "standard/nav.css";
+/*-- footer --*/
+@import "standard/footer.css";
+/*- mobile general--*/
+@import "standard/mobilestandard.css";
+
+/*--mobile phone--*/
+@media only screen and (min-width: 999px){
+
+    /*--- site grid set-up ---*/
+    .wrapper{
+	display: grid;
+	grid-template-columns:  50% 50%;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"header header"
+		"content1 content1"
+		"footer footer";	
+}
+
+header{
+	grid-area: header;
+}
+
+.content1{
+	grid-area: content1;
+	color: #4B382A; /* brown */
+	margin: 50px;
+	min-height: 400px;
+    display: inline-block;
+    margin-top: 5%;
+}
+
+}
+
+/*--mobile phone--*/
+@media only screen and (max-width: 999px){
+
+    /*--- site grid set-up ---*/
+    .wrapper{
+	display: grid;
+	grid-template-columns: 600px;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"mobileheader mobileheader"
+		"content1 content1"
+		"mobilefooter mobilefooter";	
+}/*--end of desktop query--*/
+
+
+.content1{
+	grid-area: content1;
+	color: #4B382A; /* brown */
+	margin: 10px;
+	min-height: 400px;
+    display: inline-block;
+    margin-top: 5%;
+}
+} /*-- end of mobile query--*/

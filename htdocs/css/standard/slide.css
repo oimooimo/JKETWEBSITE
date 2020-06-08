@@ -1,0 +1,74 @@
+/* clickable slide thingy based from https://www.sitepoint.com/community/t/show-one-div-hide-another-on-click/195829/11 */
+.main_div {
+	grid-area: main_div;
+	padding: 50px;
+	background-color: white;
+    }
+
+    
+    
+.inner_div {
+	background-color: #DFFCBD; /* light green*/
+	margin: 50px; 
+	width:30vw; /*-- makes dependent on the view port--*/
+    height:fit-content;
+	padding: 30px;
+}
+
+/*-- font styling and dropdown --*/
+.slide-btn {
+	text-decoration: none;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	color: #4B382A; /* brown */
+	display: block;
+	}
+
+
+.slide-container {
+	display:none;
+	padding-left: 40px;
+	}
+
+ /*-- styling of menu items for slide --*/
+
+.buttons a {
+	display: block;
+	color: #4B382A; /* brown */
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 40px;
+	line-height:55px;
+}
+/*-- when clicked button color --*/
+.buttons a.active,.buttons a.focus{
+	color: #7EC344; /* green */} 
+
+.buttons a:hover {
+	cursor:pointer;
+}
+
+.tabcontent{
+	display:none; /*-- hides the tab content until clicked--*/
+	color: #4B382A;
+	}
+	
+.tabcontent.active{
+display: block; /*-- Displays elements vertically--*/
+}
+
+
+/*-- menu clickable button for inquery in menu  --*/
+
+.button_4{
+	background-color: #4B382A; /* brown */
+	padding: 6px 16px 6px 16px;
+	text-decoration: none;
+    color: #7EC344 !IMPORTANT; /* green */
+	display: block;
+	height: 40px !IMPORTANT;
+	border-radius:20px;
+    width: fit-content !IMPORTANT; /*-- this is neccesary otherwise the link will be as long as the vw */
+}
+
+.button_4 :hover{
+    color:#DFFCBD; /* light green*/ 
+}

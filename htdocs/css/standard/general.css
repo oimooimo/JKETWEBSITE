@@ -1,0 +1,152 @@
+/*--- General standards relevant for each page  ---*/
+body{
+   font-family: 'Sawarabi Gothic', sans-serif;
+	background-color: #DFFCBD; /* light green*/
+	font-size: 20px;
+	color: #4B382A; /* brown */
+	overflow-x: hidden;  
+	margin: 0px;
+}
+
+.box {
+	padding: 20px;
+}
+
+.textcenter{
+	text-align: center;
+}
+
+h2{
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 40px;
+	color: #4B382A; /* brown */
+}
+
+h3{
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 40px;
+	color:  #7EC344; /* green */
+}
+
+h1{
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 90px;
+	color: #7EC344; /* green */
+    margin-top:45px;
+    margin-bottom:45px;
+}
+
+/*-- image styling --*/
+
+/*-- makes images responsive to the viewport */
+img {
+  max-width: 100%;
+  display: block;
+  height: auto;
+}
+/* https://css-tricks.com/almanac/properties/v/vertical-align/ and https://www.w3schools.com/css/css_align.asp*/
+.imgphoto{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+a{ /*--  link formating --*/
+	text-decoration: none;
+	color: #4B382A; /* brown */
+}
+
+.header_item a{
+    color:#fff;
+}
+/*--general button formating for each page --*/
+.button_1{
+	background-color: #4B382A; /* brown */
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 25px;
+	color: #7EC344; /* green */
+	display: block;
+	margin: 5px;
+	height: 30px;
+	border-radius:20px;
+	border:0px;
+	width:100%;
+}
+
+.button_1:hover{
+	color: #fff; /* green */
+}
+
+.button_2{
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 25px;
+	color: #4B382A; /* brown */
+	display: block;
+	margin: 5px;
+	height: 30px;
+	border-radius:20px;
+	border:0px;
+	width:100%;
+    background-color:#fff;
+}
+
+.button_2:hover{
+	background-color: #DFFCBD; /* light green*/ 
+}
+
+.button_3{
+	background-color: #4B382A; /* brown */
+	padding: 6px 8px 6px 16px;
+	text-decoration: none;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 25px;
+	color: #7EC344; /* green */
+	display: block;
+	height: 40px;
+	border-radius:20px;
+	position: absolute;
+	z-index: 3;
+	border: 0;
+    text-align: center;
+    min-width: 20%;
+}
+
+
+/*-- additional styling formating --*/
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.paddingbottom{
+	padding-bottom:100px;
+}
+.paddingtop{
+	padding-top:70px;
+}
+
+/*-- inner shaddowing from https://codepen.io/gillytech/pen/dlbsx --*/
+.innershadow {
+   box-shadow:
+        inset 0px 20px 8px -10px #CCC,
+        inset 0px -20px 8px -10px #CCC; 
+}
+
+/*-- additional styling--*/
+p a{
+	color:  #7EC344; /* green */
+}
+
+@media only screen and (min-width: 999px){
+   
+    .mobileheader, .mobilefooter{
+    display: none;
+}
+
+}

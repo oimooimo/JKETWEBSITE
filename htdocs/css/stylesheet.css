@@ -1,0 +1,159 @@
+/*--general formating--*/
+@import "standard/general.css";
+/*--header--*/
+@import "standard/header.css";
+/*-- navigation--*/
+@import "standard/nav.css";
+/*-- footer --*/
+@import "standard/footer.css";
+/*- mobile general--*/
+@import "standard/mobilestandard.css";
+
+@media only screen and (min-width: 999px){ /*--media query for desktop--*/
+
+    /*--- site grid set-up ---*/
+    .wrapper{
+        display: grid;
+        grid-template-columns: 1fr 50%;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "header header"
+            "photo photo"
+            "content1 content1"
+            "content2 content2"
+            "footer footer";	
+    }
+
+    header{
+        grid-area: header;
+    }
+
+    .photo{
+        grid-area: photo;
+        margin-top: 80px;
+        margin-bottom: 120px;
+        width: 100%;
+    }
+    
+    .content1{
+        grid-area: content1;
+        background-color: #fff; /* white */
+        color: #4B382A; /* brown */
+        padding-bottom: 100px;
+    }
+
+    .content2{
+        grid-area: content2;
+        margin-top: 60px;
+        margin-bottom: 60px;
+    }
+
+    /*-- photo grid styling --*/
+    .homeimages{
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "image1 image3 image3 image4"
+            "image2 image3 image3 image5";
+        grid-gap: 10px;
+    }
+
+    .image1 {grid-area: image1;}
+    .image2 {grid-area: image2;}
+    .image3 {grid-area: image3;}
+    .image4 {grid-area: image4;}
+    .image5 {grid-area: image5;}
+
+    /*-- additional formating --*/
+
+    .button_3{
+        background-color: #4B382A; /* brown */
+        padding: 6px 16px 6px 16px;
+        text-decoration: none;
+        font-family: 'M PLUS Rounded 1c', sans-serif; /*-- since <p> is classed as having the sawarabi font it needs this */
+        color: #7EC344 !IMPORTANT; /* green */
+        display: block;
+        border-radius:20px;
+        width: min-content !IMPORTANT; /*-- this is neccesary otherwise the link will be as long as the vw */
+        position: relative;
+        right: -70%;
+        height:fit-content;
+    }
+
+    .button_3 :hover{
+        color:#DFFCBD; /* light green*/ 
+    }
+
+    p{
+        max-width:800px;
+        display:inline-block;
+    }
+
+}/*--end of media query for desktop--*/
+
+/*--mobile phone--*/
+@media only screen and (max-width: 999px){
+
+    /*--- site grid set-up ---*/
+    .wrapper{
+        display: grid;
+        grid-template-columns: 600px;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "mobileheader mobileheader"
+            "photo photo"
+            "content1 content1"
+            "content2 content2"
+            "mobilefooter mobilefooter";	
+    }
+
+    .photo{
+        grid-area: photo;
+    }
+
+    .content1{
+        grid-area: content1;
+        background-color: #fff; /* white */
+        color: #4B382A; /* brown */
+    }
+
+    .content2{
+        grid-area: content2;
+    }
+        /*-- photo grid styling --*/
+    .homeimages{
+        display: grid;
+        grid-template-columns: 25% 25% 25% 25%;
+        grid-template-rows: auto;
+        grid-template-areas:
+            "image1 image3 image3 image4"
+            "image2 image3 image3 image5";
+        grid-gap: 10px;
+    }
+
+    .image1 {grid-area: image1;}
+    .image2 {grid-area: image2;}
+    .image3 {grid-area: image3;}
+    .image4 {grid-area: image4;}
+    .image5 {grid-area: image5;}
+
+
+    /*-- additional formating --*/
+
+    .button_3{
+        background-color: #4B382A; /* brown */
+        padding: 6px 16px 6px 16px;
+        text-decoration: none;
+        font-family: 'M PLUS Rounded 1c', sans-serif; /*-- since <p> is classed as having the sawarabi font it needs this */
+        color: #7EC344 !IMPORTANT; /* green */
+        border-radius:20px;
+        width: fit-content !IMPORTANT; /*-- this is neccesary otherwise the link will be as long as the vw */
+        height:fit-content;
+    }
+
+    .button_3 :hover{
+        color:#DFFCBD; /* light green*/ 
+    }
+
+}/*-- end of media query for mobile--*/

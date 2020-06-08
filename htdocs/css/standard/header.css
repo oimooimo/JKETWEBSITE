@@ -1,0 +1,35 @@
+/*-- general styling for header --*/
+header{
+    background-color: #7EC344; /*green */
+	text-align: right;
+	color: white;
+	font-size: 15px;
+}
+
+.button_group{
+    right: 15%;
+    text-align: center;
+    width:fit-content;
+    display: inline-block;
+}
+
+.header_item{
+    display:inline-block;
+    width: fit-content;
+    padding:20px;
+    color:#fff;
+
+}
+
+.header_item a{
+    color:#fff;
+}
+
+@media only screen and (max-width: 999px){
+.mobileheader{
+    grid-area:mobileheader;
+	background-color: #fff; /* white */
+    line-height: 0px;    
+    display: inline-block;
+}
+}

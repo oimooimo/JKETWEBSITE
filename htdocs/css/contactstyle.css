@@ -1,0 +1,122 @@
+/*--general formating--*/
+@import "standard/general.css";
+/*--header--*/
+@import "standard/header.css";
+/*-- navigation--*/
+@import "standard/nav.css";
+/*-- footer --*/
+@import "standard/footer.css";
+/*- mobile general--*/
+@import "standard/mobilestandard.css";
+
+/*--- site grid set-up ---*/
+.wrapper{
+	display: grid;
+	grid-template-columns:  50% 50%;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"header header"
+		"content1 content1"
+		"footer footer";	
+}
+
+header{
+	grid-area: header;
+	background-color: #7EC344; /*green */
+	text-align: right;
+	color: white;
+	font-size: 15px;
+    
+}
+
+
+nav{
+	position: absolute;
+	left: 10%;
+	z-index: 100;
+	background-color: #fff; /* white */
+    line-height: 0px;
+    min-width:400px;
+    max-width:min-content;
+}
+
+
+.content1{
+	grid-area: content1;
+	background-color: #fff;
+	margin: 50px;
+	min-height: 400px;
+    margin-top: 15%;
+    display: grid;
+    grid-template-columns:  50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "content2 content3";
+}
+
+.content2{
+    grid-area: content2;
+}
+
+.content3{
+    grid-area: content3;
+    text-align: center;
+    vertical-align: middle;
+}
+    
+
+
+footer{
+	grid-area: footer;
+}
+
+/* Additional formating  */
+
+h3, h2 {
+    display: inline !important;
+}
+
+/*-- styling for the image map --*/
+.map{
+   display: inline;
+}
+
+/*--mobile phone--*/
+@media only screen and (max-width: 999px){
+
+    /*--- site grid set-up ---*/
+    .wrapper{
+	display: grid;
+	grid-template-columns:  600px;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"mobileheader mobileheader"
+		"content1 content1"
+		"mobilefooter mobilefooter";	
+}
+.content1{
+	grid-area: content1;
+	background-color: #fff;
+	margin: 50px;
+	min-height: 400px;
+    margin-top: 15%;
+    display: grid;
+    grid-template-columns:  50% 50%;
+    grid-template-rows: auto;
+    grid-template-areas:
+    "content2 content2"
+    "content3 content3";
+
+}
+.content2{
+    grid-area: content2;
+}
+
+.content3{
+    grid-area: content3;
+}
+
+.map{
+    all:unset;
+}
+}/*-- mobile query ending--*/

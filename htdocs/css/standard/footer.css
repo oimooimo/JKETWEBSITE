@@ -1,0 +1,54 @@
+/*-- styling that effects the footer--*/
+
+ul {/*-- unordered list styling for footer--*/
+    display: inline-block;
+	list-style: none;
+	line-height:30px;
+	vertical-align: text-top;
+}
+
+
+.footerlogo { /*-- formating for logo so that it is in the bottom right corner --*/
+    position: absolute;
+    right: 0px;
+    margin-right: 20px;
+    width: 120px;
+}
+
+footer{
+	grid-area: footer;
+	background-color: #fff; /* white */
+	width: 100%; /* footer width is as wide as can be */
+	bottom: 0; /* puts footer at the bottom of the screen */
+}
+
+@media only screen and (max-width: 999px){
+/*-- styling that effects the footer--*/
+
+ul {/*-- unordered list styling for footer--*/
+    display: inline-block;
+	list-style: none;
+	line-height:30px;
+	vertical-align: text-top;
+}
+
+
+.footerlogo { /*-- formating for logo so that it is in the  center --*/
+    all: unset !important;
+    margin-right: unset!important;
+    position: unset!important;
+    display: inline;
+}
+
+
+.mobilefooter{
+    grid-area: mobilefooter;
+	background-color: #fff; /* white */
+	width: 100%; /* footer width is as wide as can be */
+	bottom: 0; /* puts footer at the bottom of the screen */
+    text-align: center;
+}
+.mobilefooter li{
+    text-align: left;
+}
+}

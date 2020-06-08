@@ -1,0 +1,23 @@
+/* begining of mobile standard css */
+/*--mobile phone--*/
+@media only screen and (max-width: 999px){
+/*-- styling that effects the footer--*/
+p {
+     font-size:14sp !important; /*-- font size is based on pixels--*/
+ }
+
+h3, h2{
+    font-size: 5vw;
+}
+
+.button_1, .button_2{
+    width: fit-content;
+    line-height: normal;
+}
+
+footer, nav, header{
+    display:none;
+}
+
+}
+

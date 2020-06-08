@@ -1,0 +1,161 @@
+/*--general formating--*/
+@import "standard/general.css";
+/*--header--*/
+@import "standard/header.css";
+/*-- navigation--*/
+@import "standard/nav.css";
+/*-- footer --*/
+@import "standard/footer.css";
+/*-- slide for body--*/
+@import "standard/slide.css";
+/*- mobile general--*/
+@import "standard/mobilestandard.css";
+
+@media only screen and (min-width: 999px){
+/*--- site grid set-up ---*/
+.wrapper{
+	display: grid;
+	grid-template-columns:  50% 50%;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"header header"
+		"photo content1"
+		"main_div side"
+		"content4 content4"
+		"footer footer";	
+}
+
+header{
+	grid-area: header;
+	
+}
+
+
+.photo{
+	grid-area: photo;
+    text-align: center;
+}
+
+.content1{
+	grid-area: content1;
+	color: #4B382A; /* brown */
+    margin:20px;
+    height: 90%;
+    margin-bottom:130px;
+    padding-left: 80px;
+    
+}
+
+.content2{
+	grid-area: content2;
+    background-color: #fff; /* white */
+}
+
+.side{
+	grid-area: side;
+    background-color: #fff; /* white */
+}
+.content4{
+	grid-area: content4;
+    padding-top:10%;
+    padding-bottom:9%;
+}
+footer{
+	grid-area: footer;
+}
+
+/*-- content4 little square + button */
+.smallinfo{
+	z-index: 3;
+    background-color: #fff;
+    position: absolute;
+    right: 10%;
+    width: 40%;
+    max-width: 40%;
+    max-height: 40%;
+    transform: translateY(-200%);
+}
+
+
+.bottomimg{
+    width:100%
+}
+
+}/*-- end of media --*/
+
+/*--mobile phone--*/
+@media only screen and (max-width: 999px){
+    /*--general formating--*/
+    .wrapper{
+    all: unset;
+	display: grid;
+	grid-template-columns: 600px;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"mobileheader  mobileheader"
+		"photo photo"
+        "content1 content1"
+        "main_div main_div"
+		"side side"
+		"content4 content4"
+		"mobilefooter mobilefooter";	
+    } /*-- end of wrapper div--*/
+
+.mobileheader{
+    grid-area: mobileheader;
+}
+
+.photo{
+	grid-area: photo;
+    text-align: center;
+}
+
+
+.content1{
+	grid-area: content1;
+	color: #4B382A; /* brown */    
+}
+
+.content2{
+	grid-area: content2;
+    background-color: #fff; /* white */
+}
+
+.main_div{
+    grid-area: main_div;
+    box-shadow: none;
+}
+
+.side{
+	grid-area: side;
+    background-color: #fff; /* white */   
+    text-align:center;
+}
+
+.inner_div{
+    width:initial;
+}
+
+.content4{
+	grid-area: content4;
+    padding-top:10%;
+    padding-bottom:9%;
+}
+
+
+/*-- content4 little square + button */
+.smallinfo{
+	z-index: 3;
+    background-color: #fff;
+}
+
+.bottomimg{
+    width:100%
+}
+
+.buttons a{
+    font-size: 25px;
+    display: inline-block;
+    padding: 5px;
+}
+}/*-- end of media screen div--*/
