@@ -19,7 +19,7 @@
 	grid-template-areas:
 		"header header"
 		"search search"
-        "tab tab"
+		"tab tab"
 		"aside content1"
 		"footer footer";	
 }
