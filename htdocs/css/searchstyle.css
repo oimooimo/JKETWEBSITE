@@ -19,6 +19,7 @@
 	grid-template-areas:
 		"header header"
 		"search search"
+        "tab tab"
 		"aside content1"
 		"footer footer";	
 }
@@ -35,10 +36,21 @@ header{
 .aside{
 	grid-area: aside;
 	color: #4B382A; /* brown */
-	background-color: #7EC344; /*green */
+	background-color: #DFFCBD; /* light green */
 	min-height: 400px;
 	padding: 50px;
 }
+
+.tab{
+    grid-area:tab;
+    text-align: right;
+    background-color: #7EC344;
+}
+
+.tab img{
+    display:inline !important;
+}
+
 .content1{
 	grid-area: content1;
 	color: #7EC344; /*green */
@@ -46,6 +58,68 @@ header{
 	min-height: 400px;
 	padding: 50px;
 
+}
+
+/***-- modal box based of off W3schools https://www.w3schools.com/howto/howto_css_modals.asp --***/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 101; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    display: grid;
+ 	grid-template-columns:  200px 1fr;
+	grid-template-rows: min-content;
+	grid-template-areas:
+		"modalheader modalheader"
+		"modalaside modalmain";
+    width:60%;
+    height:50%;
+}
+
+.modalheader{
+    grid-area: modalheader;
+    background-color:#7EC344 /*--- Green--*/
+}
+
+.modalaside{
+    grid-area: modalaside;
+    background-color:#DFFCBD /*--- Light Green--*/
+}
+
+.modalmain{
+    grid-area: modalmain;
+    background-color:#4B382A /*--- Green--*/
+}
+
+/* END OF MODAL CSS */
+
+/* The Close Button */
+.close {
+  color: #4B382A; /*BROWN*/
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding:5px;
+}
+
+.close:hover,
+.close:focus {
+  color: rgb(130, 95, 71); /*lighter version BROWN*/
+  text-decoration: none;
+  cursor: pointer;
 }
 } /*-- end of media query--*/
 
