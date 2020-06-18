@@ -19,8 +19,8 @@
 	grid-template-areas:
 		"header header"
 		"search search"
-		"tab tab"
-		"aside content1"
+        "tab tab"
+		"maincontent maincontent"
 		"footer footer";	
 }
 
@@ -30,14 +30,25 @@ header{
 
 .search{
 	grid-area: search;
-	background-image: url('image/search.jpg')
+	background-image: url('image/search.jpg');
+    padding-top: 20px;
+    max-height:500px;
+}
+
+.maincontent{
+    grid-area: maincontent;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: min-content;
+    grid-template-areas: "aside content1";
+    height: 600px;
+    overflow-y: scroll;
 }
 
 .aside{
 	grid-area: aside;
 	color: #4B382A; /* brown */
 	background-color: #DFFCBD; /* light green */
-	min-height: 400px;
 	padding: 50px;
 }
 
@@ -57,10 +68,16 @@ header{
 	background-color:  #4B382A; /* brown */
 	min-height: 400px;
 	padding: 50px;
+   	 overflow: auto;
+	-ms-overflow-style: none;
 
 }
 
-/***-- modal box based of off W3schools https://www.w3schools.com/howto/howto_css_modals.asp --***/
+.content1 h2{
+    color:#7EC344;
+}
+
+/***-- modal box based of off W3schools--***/
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -104,8 +121,6 @@ header{
     background-color:#4B382A /*--- Green--*/
 }
 
-/* END OF MODAL CSS */
-
 /* The Close Button */
 .close {
   color: #4B382A; /*BROWN*/
@@ -122,6 +137,18 @@ header{
   cursor: pointer;
 }
 } /*-- end of media query--*/
+
+/*-- results --*/
+.results {
+    background-color:#DFFCBD;
+    padding:20px;
+    margin:20px;
+}
+
+.error{
+    color:#DFFCBD;
+    border: 2px solid red;
+}
 
 @media only screen and (max-width: 999px){
 .wrapper{
