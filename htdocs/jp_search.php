@@ -1,5 +1,9 @@
-<?php include 'topbit.php' ?>
-
+<?php include ("topbit.php");
+    $find_sql = "SELECT * FROM `book_data`";
+    $find_query = mysqli_query($dbconnect, $find_sql);
+    $find_rs = mysqli_fetch_assoc($find_query);
+    $count = mysqli_num_rows($find_query);
+ ?>
     <link rel="stylesheet" href="css/searchstyle.css">
 
  <?php include 'jp_regheader.php' ?>
@@ -20,11 +24,11 @@
 
         </header>
 
-		<div class="search box">
+		<div class="search">
 			<img src="image/search.JPG" alt="searchphoto" class="center"/>
         </div>
 		
-        <div class="tab box">
+       <div class="tab box">
 
             <!-- FROM W3 SCHOOLS https://www.w3schools.com/howto/howto_css_modals.asp -->
             <!-- Trigger/Open The Modal -->
@@ -56,12 +60,50 @@
 
         <!-- javascript link for modal -->
         <script src="java/modal.js"></script>
-        
-		<div class="aside box">
-        </div>
 
-        <div class="content1 box">
+        <div class="maincontent">
+            <div class="aside box">
+            </div>
 
-        </div>
+            <div class="content1 box">
+                <h2> Results </h2>
+
+                <?php
+
+                if($count < 1) {
+
+                    ?>
+
+                <div class="error">
+
+                    Sorry! There are no results that match your search. Please use the search box in the right for a more detailed search!
+
+                </div><!-- end error -->
+
+                <?php
+                } // end no results if
+
+                else {
+                    do
+                    {
+                        ?>
+                        
+                <!-- Results go here -->
+                <div class="results">
+                you have results
+                </div> <!-- end of results -->
+                <?php
+
+                    } // end results 'do'
+
+                    while
+                    ($find_rs=mysqli_fetch_assoc($find_query));
+                } // end else
+
+                ?>
+
+            </div> <!-- end of content1 -->
+
+        </div> <!-- end of main-->
 
 <?php include 'jp_bottombit.php'?>
