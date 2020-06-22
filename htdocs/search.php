@@ -4,25 +4,25 @@
     $find_rs = mysqli_fetch_assoc($find_query);
     $count = mysqli_num_rows($find_query);
  ?>
+
     <link rel="stylesheet" href="css/searchstyle.css">
 
- <?php include 'regheader.php' ?>
-       <div> <a href="jp_search.php" class="button_1 box">日本語</a></div>
+ <?php include 'jp_regheader.php' ?>
+  <div> <a href="search.php" class="button_1 box">ENGLISH</a></div>
     </div><!--closing for mobileheader--> 
         
         <header class="box">
 
             <div class="button_group box">
-				<a href="/jp_search.php" class="button_1">日本語</a>
-				<a href="/donation.php" class="button_2">Donate!</a>
-				<a href="/volunteerform.php" class="button_2">Volunteer!</a>
-			</div><!-- end of button_group-->
-
+				<a href="/search.php" class="button_1">ENGLISH</a>
+				<a href="jp_donation.php" class="button_2">ご寄付</a>
+				<a href="jp_volunteerform.php" class="button_2">ボランティア募集！</a>
+			</div>
 
             <div class="header_item box">
                 <?php include'headeritem.php' ?>
-            </div><!-- end of header_item-->
-            
+            </div>
+
         </header>
 		
 		<div class="search">
@@ -91,7 +91,8 @@
                         
                 <!-- Results go here -->
                 <div class="results">
-                you have results
+                    <?php echo $find_rs['Title']; ?>
+
                 </div> <!-- end of results -->
                 <?php
 
@@ -107,4 +108,4 @@
 
         </div> <!-- end of main-->
 
-<?php include 'bottombit.php'?>
+<?php include 'jp_bottombit.php'?>
