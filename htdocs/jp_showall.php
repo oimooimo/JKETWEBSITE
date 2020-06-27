@@ -1,8 +1,12 @@
 <?php include ("jp_topbit.php");
-    $find_sql = "SELECT * FROM `book_data`";
+    $find_sql = "SELECT * FROM `book_data`
+    JOIN Author ON (book_data.AuthorID = Author.AuthorID)
+    JOIN Item ON (book_data.ItemID = Item.ItemID)
+    JOIN Publisher ON (book_data.PubID = Publisher.PubID)
+    ";
     $find_query = mysqli_query($dbconnect, $find_sql);
     $find_rs = mysqli_fetch_assoc($find_query);
-    $count = mysqli_num_rows($find_query)
+    $count = mysqli_num_rows($find_query);
  ?>
 
     <link rel="stylesheet" href="css/searchstyle.css">
@@ -69,7 +73,7 @@
             <div class="content1 box">
                 <h2> Results </h2>
 
-                <?php
+                <?php 
 
                 if($count < 1) {
 
@@ -91,7 +95,24 @@
                         
                 <!-- Results go here -->
                 <div class="results">
-                    <?php echo $find_rs['Title']; ?>
+                    <span class="sub_heading">
+                        <?php echo $find_rs['Title']; ?>
+                    </span>
+
+                    <br />
+                <p>
+                    <b>Item:</b>
+                    <?php echo $find_rs['Item']; ?>
+
+                    <br />
+                    <b> Author:</b>
+                    <?php echo $find_rs['Author']; ?>
+
+                    <br />
+                    <b> Publisher:</b>
+                    <?php echo $find_rs['Pub']; ?>
+
+                    <br />
 
                 </div> <!-- end of results -->
                 <?php
