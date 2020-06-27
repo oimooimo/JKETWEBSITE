@@ -1,24 +1,24 @@
-<!DOCTYPE html>
-<!-- declares that the document is in html -->
+<!DOCTYPE html><!-- declares that the document is in html -->
 <html lang="ja">
 
 <?php
 
     session_start(); //to allow variable transfer between pages....
     include("config.php");
-
     //connect to the database...
     $dbconnect=mysqli_connect(DB_HOST,DB_USERNAME,DB_PASSWORD,DB_NAME);
-
     if(mysqli_connect_errno()) {
         echo "Connection failed:".mysqli_connect_error();
         exit;
     }
 
+    mysqli_set_charset($dbconnect, 'utf8mb4'); //sets all data coming from database as utf8mb4
     ?>
+
 
 <head>
     <!-- meta information -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content ="width=device-width, initial=scale=1.0">
