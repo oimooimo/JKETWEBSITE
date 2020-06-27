@@ -14,7 +14,7 @@
  <?php include 'jp_regheader.php' ?>
   <div> <a href="search.php" class="button_1 box">ENGLISH</a></div>
     </div><!--closing for mobileheader--> 
-        
+
         <header class="box">
 
             <div class="button_group box">
@@ -28,11 +28,11 @@
             </div>
 
         </header>
-		
+
 		<div class="search">
 			<img src="image/search.JPG" alt="searchphoto" class="center"/>
         </div>
-		
+
        <div class="tab box">
 
             <!-- FROM W3 SCHOOLS https://www.w3schools.com/howto/howto_css_modals.asp -->
@@ -56,11 +56,11 @@
                 <div class= "modalmain">
                     <p>Some text in the Modal..</p>
                 </div>
-           
+
                 </div><!-- MODAL CONTENT-->
 
             </div><!--/MYMODAL-->
-        
+
         </div> <!-- end of tab-->
 
         <!-- javascript link for modal -->
@@ -92,15 +92,40 @@
                     do
                     {
                         ?>
-                        
+
                 <!-- Results go here -->
                 <div class="results">
-                    <span class="sub_heading">
-                        <?php echo $find_rs['Title']; ?>
-                    </span>
 
-                    <br />
-                <p>
+                <!-- title and check in-->
+                <div class="flex-container">
+                        <div>
+                            <span class="sub_heading">
+                                <?php echo $find_rs['Title']; ?>
+                            </span>
+                        </div> 
+                    <!--/title-->
+
+                    <!--Availability-->
+
+                    <?php 
+                        if ($find_rs['CheckIn'] == 0) {?>
+                            Available! 
+
+                        <?php
+                        } //end Check in if
+
+                        else {
+
+                        ?> Checked out
+                        <?php
+                        } // end check in else
+
+                        ?>
+
+                    <!--/availability-->
+                </div> <!--/flexcontainer-->
+
+                <div>
                     <b>Item:</b>
                     <?php echo $find_rs['Item']; ?>
 
@@ -111,8 +136,13 @@
                     <br />
                     <b> Publisher:</b>
                     <?php echo $find_rs['Pub']; ?>
+                </div> <!--- Sub information-->
+                    <hr />
 
-                    <br />
+                <div>
+                    <b> Description:</b>
+                    <?php echo $find_rs['Description']; ?>
+                </div><!---Description-->
 
                 </div> <!-- end of results -->
                 <?php
