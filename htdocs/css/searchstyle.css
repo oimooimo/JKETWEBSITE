@@ -1,132 +1,200 @@
-<?php include ("jp_topbit.php");
-    $find_sql = "SELECT * FROM `book_data`
-    JOIN Author ON (book_data.AuthorID = Author.AuthorID)
-    JOIN Item ON (book_data.ItemID = Item.ItemID)
-    JOIN Publisher ON (book_data.PubID = Publisher.PubID)
-    ";
-    $find_query = mysqli_query($dbconnect, $find_sql);
-    $find_rs = mysqli_fetch_assoc($find_query);
-    $count = mysqli_num_rows($find_query);
- ?>
+/*--general formating--*/
+@import "standard/general.css";
+/*--header--*/
+@import "standard/header.css";
+/*-- navigation--*/
+@import "standard/nav.css";
+/*-- footer --*/
+@import "standard/footer.css";
+/*- mobile general--*/
+@import "standard/mobilestandard.css";
 
-    <link rel="stylesheet" href="css/searchstyle.css">
+/*--- site grid set-up ---*/
 
- <?php include 'jp_regheader.php' ?>
-  <div> <a href="search.php" class="button_1 box">ENGLISH</a></div>
-    </div><!--closing for mobileheader--> 
-        
-        <header class="box">
+@media only screen and (min-width: 999px){/*-- desktop query--*/
+.wrapper{
+	display: grid;
+	grid-template-columns:  400px 1fr;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"header header"
+		"search search"
+        "tab tab"
+		"maincontent maincontent"
+		"footer footer";	
+}
 
-            <div class="button_group box">
-				<a href="/search.php" class="button_1">ENGLISH</a>
-				<a href="jp_donation.php" class="button_2">ご寄付</a>
-				<a href="jp_volunteerform.php" class="button_2">ボランティア募集！</a>
-			</div>
+header{
+	grid-area: header;
+}
 
-            <div class="header_item box">
-                <?php include'headeritem.php' ?>
-            </div>
+.search{
+	grid-area: search;
+	background-image: url('image/search.jpg');
+    padding-top: 20px;
+    max-height:500px;
+}
 
-        </header>
-		
-		<div class="search">
-			<img src="image/search.JPG" alt="searchphoto" class="center"/>
-        </div>
-		
-       <div class="tab box">
+.maincontent{
+    grid-area: maincontent;
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: min-content;
+    grid-template-areas: "aside content1";
+    height: 600px;
+    overflow-y: scroll;
+}
 
-            <!-- FROM W3 SCHOOLS https://www.w3schools.com/howto/howto_css_modals.asp -->
-            <!-- Trigger/Open The Modal -->
-            <img src="image/icon.png" id="myBtn"></img>
+.aside{
+	grid-area: aside;
+	color: #4B382A; /* brown */
+	background-color: #DFFCBD; /* light green */
+	padding: 50px;
+}
 
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
+.tab{
+    grid-area:tab;
+    text-align: right;
+    background-color: #7EC344;
+}
 
-                <!-- Modal content -->
-                <div class="modal-content">
+.tab img{
+    display:inline !important;
+}
 
-                <div class="modalheader">
-                    <span class="close">&times;</span>
-                </div>
+.content1{
+	grid-area: content1;
+	color: #7EC344; /*green */
+	background-color:  #4B382A; /* brown */
+	min-height: 400px;
+	padding: 50px;
+    overflow: auto;
+    -ms-overflow-style: none;
 
-                <div class="modalaside">
-                d
-                </div>
+}
 
-                <div class= "modalmain">
-                    <p>Some text in the Modal..</p>
-                </div>
-           
-                </div><!-- MODAL CONTENT-->
+.content1 h2{
+    color:#7EC344;
+}
 
-            </div><!--/MYMODAL-->
-        
-        </div> <!-- end of tab-->
+/***-- modal box based of off W3schools--***/
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 101; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
 
-        <!-- javascript link for modal -->
-        <script src="java/modal.js"></script>
+/* Modal Content */
+.modal-content {
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    display: grid;
+ 	grid-template-columns:  200px 1fr;
+	grid-template-rows: min-content;
+	grid-template-areas:
+		"modalheader modalheader"
+		"modalaside modalmain";
+    width:60%;
+    height:50%;
+}
 
-        <div class="maincontent">
-            <div class="aside box">
-            </div>
+.modalheader{
+    grid-area: modalheader;
+    background-color:#7EC344 /*--- Green--*/
+}
 
-            <div class="content1 box">
-                <h2> Results </h2>
+.modalaside{
+    grid-area: modalaside;
+    background-color:#DFFCBD /*--- Light Green--*/
+}
 
-                <?php 
+.modalmain{
+    grid-area: modalmain;
+    background-color:#4B382A /*--- Green--*/
+}
 
-                if($count < 1) {
+/* The Close Button */
+.close {
+  color: #4B382A; /*BROWN*/
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  padding:5px;
+}
 
-                    ?>
+.close:hover,
+.close:focus {
+  color: rgb(130, 95, 71); /*lighter version BROWN*/
+  text-decoration: none;
+  cursor: pointer;
+}
+} /*-- end of media query--*/
 
-                <div class="error">
+/*-- results --*/
+.results {
+    background-color:#DFFCBD; /* light green*/
+    color:#4B382A;/* Brown */
+    padding:20px;
+    margin:20px;
+}
 
-                    Sorry! There are no results that match your search. Please use the search box in the right for a more detailed search!
+.error{
+    color:rgb(142, 69, 58);
+    border: 2px solid red;
+}
 
-                </div><!-- end error -->
+.sub_heading {
+    font-weight: bold;
+    color:#4B382A;/* brown */
+    margin-right: 20px;
+}
 
-                <?php
-                } // end no results if
+.flex-container{
+    display:flex;
+    flex-wrap:nowrap;
+}
 
-                else {
-                    do
-                    {
-                        ?>
-                        
-                <!-- Results go here -->
-                <div class="results">
-                    <span class="sub_heading">
-                        <?php echo $find_rs['Title']; ?>
-                    </span>
+/*-- Check In fonts --*/
+.checkin{
+    color:green;
+}
+.checkout{
+    color:red;
+}
+@media only screen and (max-width: 999px){
+.wrapper{
+	display: grid;
+	grid-template-columns: 600px;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"mobileheader mobileheader"
+		"search search"
+		"aside aside"
+        "content1 content1"
+		"mobilefooter mobilefooter";	
+}
 
-                    <br />
-                <p>
-                    <b>Item:</b>
-                    <?php echo $find_rs['Item']; ?>
+.search{
+    grid-area: search;
+    height:20%;
+}
 
-                    <br />
-                    <b> Author:</b>
-                    <?php echo $find_rs['Author']; ?>
+.aside{
+    grid-area: aside;
+    height:10%;
+}
 
-                    <br />
-                    <b> Publisher:</b>
-                    <?php echo $find_rs['Pub']; ?>
-
-                    <br />
-
-                </div> <!-- end of results -->
-                <?php
-
-                    } // end results 'do'
-
-                    while
-                    ($find_rs=mysqli_fetch_assoc($find_query));
-                } // end else
-
-                ?>
-
-            </div> <!-- end of content1 -->
-
-        </div> <!-- end of main-->
-
-<?php include 'jp_bottombit.php'?>
+.content1{
+    grid-area: content1;
+    color: #7EC344; /*green */
+	background-color:  #4B382A; /* brown */
+}
+}/*-- end of media query--*/
