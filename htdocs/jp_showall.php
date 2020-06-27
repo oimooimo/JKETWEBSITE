@@ -14,7 +14,7 @@
  <?php include 'jp_regheader.php' ?>
   <div> <a href="search.php" class="button_1 box">ENGLISH</a></div>
     </div><!--closing for mobileheader--> 
-
+        
         <header class="box">
 
             <div class="button_group box">
@@ -28,11 +28,11 @@
             </div>
 
         </header>
-
+		
 		<div class="search">
 			<img src="image/search.JPG" alt="searchphoto" class="center"/>
         </div>
-
+		
        <div class="tab box">
 
             <!-- FROM W3 SCHOOLS https://www.w3schools.com/howto/howto_css_modals.asp -->
@@ -56,11 +56,11 @@
                 <div class= "modalmain">
                     <p>Some text in the Modal..</p>
                 </div>
-
+           
                 </div><!-- MODAL CONTENT-->
 
             </div><!--/MYMODAL-->
-
+        
         </div> <!-- end of tab-->
 
         <!-- javascript link for modal -->
@@ -92,10 +92,10 @@
                     do
                     {
                         ?>
-
+                        
                 <!-- Results go here -->
                 <div class="results">
-
+                
                 <!-- title and check in-->
                 <div class="flex-container">
                         <div>
@@ -106,22 +106,22 @@
                     <!--/title-->
 
                     <!--Availability-->
-
+                    
                     <?php 
                         if ($find_rs['CheckIn'] == 0) {?>
-                            Available! 
+                            <div class="checkin"> Available &#10004; </div>
 
                         <?php
                         } //end Check in if
 
                         else {
 
-                        ?> Checked out
+                        ?> <div class="checkout"> Checked out &#10060; </div>
                         <?php
                         } // end check in else
 
                         ?>
-
+                    
                     <!--/availability-->
                 </div> <!--/flexcontainer-->
 
@@ -138,7 +138,7 @@
                     <?php echo $find_rs['Pub']; ?>
                 </div> <!--- Sub information-->
                     <hr />
-
+                     
                 <div>
                     <b> Description:</b>
                     <?php echo $find_rs['Description']; ?>
