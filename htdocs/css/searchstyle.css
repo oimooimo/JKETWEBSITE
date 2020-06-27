@@ -1,181 +1,132 @@
-/*--general formating--*/
-@import "standard/general.css";
-/*--header--*/
-@import "standard/header.css";
-/*-- navigation--*/
-@import "standard/nav.css";
-/*-- footer --*/
-@import "standard/footer.css";
-/*- mobile general--*/
-@import "standard/mobilestandard.css";
+<?php include ("jp_topbit.php");
+    $find_sql = "SELECT * FROM `book_data`
+    JOIN Author ON (book_data.AuthorID = Author.AuthorID)
+    JOIN Item ON (book_data.ItemID = Item.ItemID)
+    JOIN Publisher ON (book_data.PubID = Publisher.PubID)
+    ";
+    $find_query = mysqli_query($dbconnect, $find_sql);
+    $find_rs = mysqli_fetch_assoc($find_query);
+    $count = mysqli_num_rows($find_query);
+ ?>
 
-/*--- site grid set-up ---*/
+    <link rel="stylesheet" href="css/searchstyle.css">
 
-@media only screen and (min-width: 999px){/*-- desktop query--*/
-.wrapper{
-	display: grid;
-	grid-template-columns:  400px 1fr;
-	grid-template-rows: auto;
-	grid-template-areas:
-		"header header"
-		"search search"
-        "tab tab"
-		"maincontent maincontent"
-		"footer footer";	
-}
+ <?php include 'jp_regheader.php' ?>
+  <div> <a href="search.php" class="button_1 box">ENGLISH</a></div>
+    </div><!--closing for mobileheader--> 
+        
+        <header class="box">
 
-header{
-	grid-area: header;
-}
+            <div class="button_group box">
+				<a href="/search.php" class="button_1">ENGLISH</a>
+				<a href="jp_donation.php" class="button_2">ご寄付</a>
+				<a href="jp_volunteerform.php" class="button_2">ボランティア募集！</a>
+			</div>
 
-.search{
-	grid-area: search;
-	background-image: url('image/search.jpg');
-    padding-top: 20px;
-    max-height:500px;
-}
+            <div class="header_item box">
+                <?php include'headeritem.php' ?>
+            </div>
 
-.maincontent{
-    grid-area: maincontent;
-    display: grid;
-    grid-template-columns: 400px 1fr;
-    grid-template-rows: min-content;
-    grid-template-areas: "aside content1";
-    height: 600px;
-    overflow-y: scroll;
-}
+        </header>
+		
+		<div class="search">
+			<img src="image/search.JPG" alt="searchphoto" class="center"/>
+        </div>
+		
+       <div class="tab box">
 
-.aside{
-	grid-area: aside;
-	color: #4B382A; /* brown */
-	background-color: #DFFCBD; /* light green */
-	padding: 50px;
-}
+            <!-- FROM W3 SCHOOLS https://www.w3schools.com/howto/howto_css_modals.asp -->
+            <!-- Trigger/Open The Modal -->
+            <img src="image/icon.png" id="myBtn"></img>
 
-.tab{
-    grid-area:tab;
-    text-align: right;
-    background-color: #7EC344;
-}
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
 
-.tab img{
-    display:inline !important;
-}
+                <!-- Modal content -->
+                <div class="modal-content">
 
-.content1{
-	grid-area: content1;
-	color: #7EC344; /*green */
-	background-color:  #4B382A; /* brown */
-	min-height: 400px;
-	padding: 50px;
-   	 overflow: auto;
-	-ms-overflow-style: none;
+                <div class="modalheader">
+                    <span class="close">&times;</span>
+                </div>
 
-}
+                <div class="modalaside">
+                d
+                </div>
 
-.content1 h2{
-    color:#7EC344;
-}
+                <div class= "modalmain">
+                    <p>Some text in the Modal..</p>
+                </div>
+           
+                </div><!-- MODAL CONTENT-->
 
-/***-- modal box based of off W3schools--***/
-.modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 101; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
+            </div><!--/MYMODAL-->
+        
+        </div> <!-- end of tab-->
 
-/* Modal Content */
-.modal-content {
-    margin: 15% auto; /* 15% from the top and centered */
-    padding: 20px;
-    display: grid;
- 	grid-template-columns:  200px 1fr;
-	grid-template-rows: min-content;
-	grid-template-areas:
-		"modalheader modalheader"
-		"modalaside modalmain";
-    width:60%;
-    height:50%;
-}
+        <!-- javascript link for modal -->
+        <script src="java/modal.js"></script>
 
-.modalheader{
-    grid-area: modalheader;
-    background-color:#7EC344 /*--- Green--*/
-}
+        <div class="maincontent">
+            <div class="aside box">
+            </div>
 
-.modalaside{
-    grid-area: modalaside;
-    background-color:#DFFCBD /*--- Light Green--*/
-}
+            <div class="content1 box">
+                <h2> Results </h2>
 
-.modalmain{
-    grid-area: modalmain;
-    background-color:#4B382A /*--- Green--*/
-}
+                <?php 
 
-/* The Close Button */
-.close {
-  color: #4B382A; /*BROWN*/
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-  padding:5px;
-}
+                if($count < 1) {
 
-.close:hover,
-.close:focus {
-  color: rgb(130, 95, 71); /*lighter version BROWN*/
-  text-decoration: none;
-  cursor: pointer;
-}
-} /*-- end of media query--*/
+                    ?>
 
-/*-- results --*/
-.results {
-    background-color:#DFFCBD;
-    padding:20px;
-    margin:20px;
-}
+                <div class="error">
 
-.error{
-    color:#DFFCBD;
-    border: 2px solid red;
-}
+                    Sorry! There are no results that match your search. Please use the search box in the right for a more detailed search!
 
-@media only screen and (max-width: 999px){
-.wrapper{
-	display: grid;
-	grid-template-columns: 600px;
-	grid-template-rows: auto;
-	grid-template-areas:
-		"mobileheader mobileheader"
-		"search search"
-		"aside aside"
-        "content1 content1"
-		"mobilefooter mobilefooter";	
-}
+                </div><!-- end error -->
 
-.search{
-    grid-area: search;
-    height:20%;
-}
+                <?php
+                } // end no results if
 
-.aside{
-    grid-area: aside;
-    height:10%;
-}
+                else {
+                    do
+                    {
+                        ?>
+                        
+                <!-- Results go here -->
+                <div class="results">
+                    <span class="sub_heading">
+                        <?php echo $find_rs['Title']; ?>
+                    </span>
 
-.content1{
-    grid-area: content1;
-    color: #7EC344; /*green */
-	background-color:  #4B382A; /* brown */
-}
-}/*-- end of media query--*/
+                    <br />
+                <p>
+                    <b>Item:</b>
+                    <?php echo $find_rs['Item']; ?>
+
+                    <br />
+                    <b> Author:</b>
+                    <?php echo $find_rs['Author']; ?>
+
+                    <br />
+                    <b> Publisher:</b>
+                    <?php echo $find_rs['Pub']; ?>
+
+                    <br />
+
+                </div> <!-- end of results -->
+                <?php
+
+                    } // end results 'do'
+
+                    while
+                    ($find_rs=mysqli_fetch_assoc($find_query));
+                } // end else
+
+                ?>
+
+            </div> <!-- end of content1 -->
+
+        </div> <!-- end of main-->
+
+<?php include 'jp_bottombit.php'?>
