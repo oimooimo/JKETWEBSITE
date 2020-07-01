@@ -169,6 +169,48 @@ header{
 .checkout{
     color:red;
 }
+
+/** search formating-**/
+.searchform{
+    z-index: 10;
+    width: 75%;
+    position: absolute;
+    top: 450px;
+    height: 150px;
+    left: 10%;
+    display: inline;
+}
+
+.searchbox{
+    width: 100%;
+    height: 100%;
+    font-size: 80px;
+    border: 0;
+    outline:none;
+}
+
+input{
+    height:inherit;
+    display:inline-block;
+    box-sizing: border-box;
+    width:20px;
+    color:#4B382A;/*brown*/
+}
+input[type="submit"] {
+    position: inherit;
+    background-color: white;
+    border: 0px;
+    outline: none;
+    width: 10%;
+    font-size: 600%;
+    color:#4B382A;/*brown*/
+}
+
+input[type="submit"]:hover {
+    color:#7EC344/*green*/
+}
+
+
 @media only screen and (max-width: 999px){
 .wrapper{
 	display: grid;
