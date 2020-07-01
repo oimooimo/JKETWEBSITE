@@ -1,12 +1,29 @@
 <?php include ("jp_topbit.php");
+
+    $result = TRIM($_POST['searchbasic']);
+    
     $find_sql = "SELECT * FROM `book_data`
     JOIN Author ON (book_data.AuthorID = Author.AuthorID)
     JOIN Item ON (book_data.ItemID = Item.ItemID)
     JOIN Publisher ON (book_data.PubID = Publisher.PubID)
-    ";
+
+    WHERE `Title` LIKE '%$result%' OR
+    `Description` LIKE '%$result%' OR
+    `Author` LIKE '%$result%' OR
+    `KatAuthor` LIKE '%$result%' OR
+    `RomAuthor` LIKE '%$result%' OR
+    `Pub` LIKE '%$result%' OR
+    `KatPub` LIKE '%$result%' OR
+    `RomPub` LIKE '%$result%' OR
+    `Item` LIKE '%$result%' OR
+    `RomItem` LIKE '%$result%' OR
+    `KatItem` LIKE '%$result%'
+
+    "; 
     $find_query = mysqli_query($dbconnect, $find_sql);
     $find_rs = mysqli_fetch_assoc($find_query);
     $count = mysqli_num_rows($find_query);
+
  ?>
 
     <link rel="stylesheet" href="css/searchstyle.css">
@@ -31,6 +48,13 @@
 		
 		<div class="search">
 			<img src="image/search.JPG" alt="searchphoto" class="center"/>
+
+            <form class="searchform" method="post" action="jp_showall.php" enctype="multipart/form-data">
+        
+            <input class="searchbox" type="text" name="searchbasic" size="80" value="" required placeholder=""/>
+            <input class="submit" type="submit" name="findsearch" value="&#8981;"/>
+		    </form>	
+
         </div>
 		
        <div class="tab box">
@@ -71,9 +95,9 @@
             </div>
 
             <div class="content1 box">
-                <h2> Results </h2>
+                <h2> リザルト </h2>
 
-               <?php include 'results.php'?>
+               <?php include 'jp_results.php'?>
 
             </div> <!-- end of content1 -->
 
