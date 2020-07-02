@@ -49,9 +49,12 @@
         <img src="image/search.JPG" alt="searchphoto" class="center"/>
         
         <form class="searchform" method="post" action="jp_showall.php" enctype="multipart/form-data">
-        
-            <input class="searchbox" type="text" name="searchbasic" size="80" value="" />
+
+            <div class="basicsearch">
+            <input class="searchbox" type="text" name="searchbasic" size="80" value="" required placeholder=""/>
             <input class="submit" type="submit" name="findsearch" value="&#8981;"/>
+            </div><!-- /basic search--->
+            
 		</form>	
         </div>
 		
@@ -89,13 +92,23 @@
         <script src="java/modal.js"></script>
 
         <div class="maincontent">
+        
             <div class="aside box">
-            </div>
+            <h2>Advanced Search</h2>
+
+            <div class="advanced-frame">
+            
+            <form class="searchform" method="post" action="advanced.php" encytype="multipart/form-data">
+            <p> form goes here<p>
+            <input class="submit advanced-button" type="submit" name="advanced" value="Search &#8981;" />
+            </form>
+            </div> <!--advanced frame-->
+            </div> <!--/aside box-->
 
             <div class="content1 box">
                 <h2> Results </h2>
 
-               <?php include 'jp_results.php'?>
+               <?php include 'results.php'?>
 
             </div> <!-- end of content1 -->
 
