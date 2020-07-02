@@ -73,24 +73,88 @@
         <script src="java/modal.js"></script>
 
         <div class="maincontent">
-
-             <div class="aside box">
+            <div class="aside box">
                 <h2>Advanced Search</h2>
 
-                <div class="advanced-frame">
-                <form class="searchform" method="post" action="advanced.php" encytype="multipart/form-data">
-                <p> form goes here<p>
-                <input class="submit advanced-button" type="submit" name="advanced" value="Search &#8981;" />
-                </form>
-                </div> <!--advanced frame-->
-            </div> <!--/aside box-->
+                 <div class="advanced-frame">
             
+                <form class="searchform" method="post" action="advanced.php" encytype="multipart/form-data">
+
+                <input class="adv" type="text" name="Title" size="40" value="" placeholder="Book Title"/>
+
+                <input class="adv" type="text" name="ISBN" size="40" value="" placeholder="ISBN-13 e.g 980000000000000"/>
+
+            <!--genre dropdown-->
+            <select class="search adv" name="Author">
+            <option value="" disabled selected>Author</option>
+            <?php 
+            $Author_sql="SELECT * FROM `Author` ORDER BY `Author`.`Author` ASC";
+            $Author_query = mysqli_query($dbconnect, $Author_sql);
+            $Author_rs=mysqli_fetch_assoc($Author_query);
+
+            do{
+                ?>
+                <option value="<?php echo $Author_rs['Author'] ?>"><?php echo $Author_rs['Author'];?></option>
+            <?php
+
+            } // end genre do loop
+
+            while ($Author_rs=mysqli_fetch_assoc($Author_query))
+            ?>
+            </select>
+            <!--/genre dropdown-->
+ 
+            <!--Publisher dropdown-->
+            <select class="search adv" name="Publisher">
+            <option value="" disabled selected>Publisher</option>
+            <?php 
+            $Pub_sql="SELECT * FROM `Publisher` ORDER BY `Publisher`.`Pub` ASC";
+            $Pub_query = mysqli_query($dbconnect, $Pub_sql);
+            $Pub_rs=mysqli_fetch_assoc($Pub_query);
+
+            do{
+                ?>
+                <option value="<?php echo $Pub_rs['Pub'] ?>"><?php echo $Pub_rs['Pub'];?></option>
+            <?php
+
+            } // end Publisher do loop
+
+            while ($Pub_rs=mysqli_fetch_assoc($Pub_query))
+            ?>
+            </select>
+            <!--/Pub dropdown-->
+
+            <!--Item dropdown-->
+            <select class="search adv" name="Item">
+            <option value="" disabled selected>Item Type</option>
+            <?php 
+            $Item_sql="SELECT * FROM `Item` ORDER BY `Item`.`Item` ASC";
+            $Item_query = mysqli_query($dbconnect, $Item_sql);
+            $Item_rs=mysqli_fetch_assoc($Item_query);
+
+            do{
+                ?>
+                <option value="<?php echo $Item_rs['Item'] ?>"><?php echo $Item_rs['Item'];?></option>
+            <?php
+
+            } // end Item do loop
+
+            while ($Item_rs=mysqli_fetch_assoc($Item_query))
+            ?>
+            </select>
+            <!--/Item dropdown-->
+
+            <input class="submit advanced-button" type="submit" name="advanced" value="Search &#8981;" />
+            </form>
+            </div> <!--advanced frame-->
+            </div> <!--/aside box-->
+
             <div class="content1 box">
                 <h2> 本探し </h2>
-            <?php include 'jp_results.php'?>
-            </div> <!-- end of content1 -->
 
-        </div><!--main box-->
+               <?php include 'jp_results.php'?>
+
+            </div> <!-- end of content1 -->
 
         </div> <!-- end of main-->
 
