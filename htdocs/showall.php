@@ -1,3 +1,5 @@
+<?php include ("topbit.php");
+
     $result = TRIM($_POST['searchbasic']);
     
     $find_sql = "SELECT * FROM `book_data`
@@ -170,10 +172,10 @@
             <div class="content1 box">
                 <h2> Results </h2>
 
-               <?php include 'jp_results.php'?>
+               <?php include 'results.php'?>
 
             </div> <!-- end of content1 -->
 
         </div> <!-- end of main-->
 
-<?php include 'jp_bottombit.php'?>
+<?php include 'bottombit.php'?>
