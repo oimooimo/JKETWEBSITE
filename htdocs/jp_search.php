@@ -1,5 +1,9 @@
-<?php include ("topbit.php");
-    $find_sql = "SELECT * FROM `book_data`";
+<?php include ("jp_topbit.php");
+    $find_sql = "SELECT * FROM `book_data`
+    JOIN Author ON (book_data.AuthorID = Author.AuthorID)
+    JOIN Item ON (book_data.ItemID = Item.ItemID)
+    JOIN Publisher ON (book_data.PubID = Publisher.PubID)
+    ";
     $find_query = mysqli_query($dbconnect, $find_sql);
     $find_rs = mysqli_fetch_assoc($find_query);
     $count = mysqli_num_rows($find_query);
@@ -24,8 +28,15 @@
 
         </header>
 
-		<div class="search">
-			<img src="image/search.JPG" alt="searchphoto" class="center"/>
+<div class="search">
+        <img src="image/search.JPG" alt="searchphoto" class="center"/>
+        
+        <form class="searchform" method="post" action="jp_showall.php" enctype="multipart/form-data">
+            <div class="basicsearch">
+            <input class="searchbox" type="text" name="searchbasic" size="80" value="" required placeholder=""/>
+            <input class="submit" type="submit" name="findsearch" value="&#8981;"/>
+            </div><!-- /basic search--->
+		</form>	
         </div>
 		
        <div class="tab box">
@@ -62,47 +73,24 @@
         <script src="java/modal.js"></script>
 
         <div class="maincontent">
-            <div class="aside box">
-            </div>
 
+             <div class="aside box">
+                <h2>Advanced Search</h2>
+
+                <div class="advanced-frame">
+                <form class="searchform" method="post" action="advanced.php" encytype="multipart/form-data">
+                <p> form goes here<p>
+                <input class="submit advanced-button" type="submit" name="advanced" value="Search &#8981;" />
+                </form>
+                </div> <!--advanced frame-->
+            </div> <!--/aside box-->
+            
             <div class="content1 box">
-                <h2> Results </h2>
-
-                <?php
-
-                if($count < 1) {
-
-                    ?>
-
-                <div class="error">
-
-                    Sorry! There are no results that match your search. Please use the search box in the right for a more detailed search!
-
-                </div><!-- end error -->
-
-                <?php
-                } // end no results if
-
-                else {
-                    do
-                    {
-                        ?>
-                        
-                <!-- Results go here -->
-                <div class="results">
-                you have results
-                </div> <!-- end of results -->
-                <?php
-
-                    } // end results 'do'
-
-                    while
-                    ($find_rs=mysqli_fetch_assoc($find_query));
-                } // end else
-
-                ?>
-
+                <h2> 本探し </h2>
+            <?php include 'jp_results.php'?>
             </div> <!-- end of content1 -->
+
+        </div><!--main box-->
 
         </div> <!-- end of main-->
 
