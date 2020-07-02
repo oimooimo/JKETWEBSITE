@@ -14,7 +14,7 @@
 @media only screen and (min-width: 999px){/*-- desktop query--*/
 .wrapper{
 	display: grid;
-	grid-template-columns:  400px 1fr;
+	grid-template-columns:  500px 1fr;
 	grid-template-rows: auto;
 	grid-template-areas:
 		"header header"
@@ -38,7 +38,7 @@ header{
 .maincontent{
     grid-area: maincontent;
     display: grid;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 500px 1fr;
     grid-template-rows: min-content;
     grid-template-areas: "aside content1";
     height: 600px;
@@ -50,6 +50,10 @@ header{
 	color: #4B382A; /* brown */
 	background-color: #DFFCBD; /* light green */
 	padding: 50px;
+    overflow: hidden;
+    position: absolute;
+    width: 400px;
+
 }
 
 .tab{
@@ -68,8 +72,6 @@ header{
 	background-color:  #4B382A; /* brown */
 	min-height: 400px;
 	padding: 50px;
-    overflow: auto;
-    -ms-overflow-style: none;
 
 }
 
@@ -172,13 +174,6 @@ header{
 
 /** search formating-**/
 .searchform{
-    z-index: 10;
-    width: 75%;
-    position: absolute;
-    top: 450px;
-    height: 150px;
-    left: 10%;
-    display: inline;
 }
 
 .searchbox{
@@ -189,6 +184,16 @@ header{
     outline:none;
 }
 
+.basicsearch{
+    z-index: 10;
+    width: 75%;
+    position: absolute;
+    top: 450px;
+    height: 150px;
+    left: 10%;
+    display: inline;
+}
+
 input{
     height:inherit;
     display:inline-block;
@@ -196,7 +201,8 @@ input{
     width:20px;
     color:#4B382A;/*brown*/
 }
-input[type="submit"] {
+
+.basicsearch input[type="submit"] {
     position: inherit;
     background-color: white;
     border: 0px;
@@ -206,7 +212,31 @@ input[type="submit"] {
     color:#4B382A;/*brown*/
 }
 
-input[type="submit"]:hover {
+/*-- advanced search formating --*/
+
+.advanced-frame{
+    background-color:#7EC344;/*--darkgreen--*/
+    height: 200x;
+    padding:20px;
+}
+
+.advanced-button{
+    border:0;
+    background-color:#4B382A;
+    outline: 0;
+    margin:auto;
+    font-size: 155%;
+    width: 95%;
+    color:#7EC344;
+    display: inline;
+}
+
+.adv{
+    width:95%;
+    margin-bottom: 5px;
+}
+
+.basicsearch input[type="submit"]:hover {
     color:#7EC344/*green*/
 }
 
@@ -232,11 +262,8 @@ input[type="submit"]:hover {
 .aside{
     grid-area: aside;
     height:10%;
+    align-content: center;
 }
 
 .content1{
-    grid-area: content1;
-    color: #7EC344; /*green */
-	background-color:  #4B382A; /* brown */
-}
-}/*-- end of media query--*/
+    grid-a
