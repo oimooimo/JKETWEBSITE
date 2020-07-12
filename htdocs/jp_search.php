@@ -78,7 +78,7 @@
 
                  <div class="advanced-frame">
             
-                <form class="searchform" method="post" action="advanced.php" encytype="multipart/form-data">
+                <form class="searchform" method="post" action="jp_advanced.php" encytype="multipart/form-data">
 
                 <input class="adv" type="text" name="Title" size="40" value="" placeholder="Book Title"/>
 
