@@ -53,6 +53,7 @@ header{
     overflow: hidden;
     position: absolute;
     width: 400px;
+    padding-top:0;
 
 }
 
@@ -70,7 +71,7 @@ header{
 	grid-area: content1;
 	color: #7EC344; /*green */
 	background-color:  #4B382A; /* brown */
-	min-height: 400px;
+	min-height: 500px;
 	padding: 50px;
 
 }
@@ -96,7 +97,7 @@ header{
 
 /* Modal Content */
 .modal-content {
-    margin: 15% auto; /* 15% from the top and centered */
+    margin: 10% auto; /* 10% from the top and centered */
     padding: 20px;
     display: grid;
  	grid-template-columns:  200px 1fr;
@@ -110,17 +111,21 @@ header{
 
 .modalheader{
     grid-area: modalheader;
-    background-color:#7EC344 /*--- Green--*/
+    background-color:#7EC344; /*--- Green--*/
 }
 
 .modalaside{
     grid-area: modalaside;
-    background-color:#DFFCBD /*--- Light Green--*/
+    background-color:#DFFCBD; /*--- Light Green--*/
 }
 
 .modalmain{
     grid-area: modalmain;
-    background-color:#4B382A /*--- Green--*/
+    background-color:#4B382A; /*--- Green--*/
+    color:#7EC344;/*dark green*/;
+    text-align: left;
+    height:500px;
+    overflow-y: scroll;
 }
 
 /* The Close Button */
@@ -139,6 +144,53 @@ header{
   cursor: pointer;
 }
 } /*-- end of media query--*/
+
+/* Extra add entry styling */
+
+.add-entry{
+    margin:30px;
+    text-align: block;
+}
+
+.add-field{
+    outline: 0;
+    width: 80%;
+    height: 40px;
+    font-size: 18px;
+    padding: auto;
+    display: block;
+    margin-bottom:10px;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    color: #4B382A !important; 
+
+}
+
+.desc{
+    height:200px;
+}
+
+.add-entry select{
+    width: max-content;
+    display: block;
+    font-size: 20px;
+    color: #4B382A !important; 
+    font-family: 'Sawarabi Gothic', sans-serif;
+
+}
+
+.add-entry .advanced-button{
+    background-color:#DFFCBD;/*light green*/
+    color:#4B382A;/*brown*/
+    width:150px;
+}
+
+/*-- placeholder styling text from https://optinmonster.com/docs/how-to-stylize-your-placeholder-text/ --*/
+
+::-webkit-input-placeholder { 
+    font-size: 20px;
+    color: #4B382A !important; 
+    font-family: 'Sawarabi Gothic', sans-serif;
+    } 
 
 /*-- results --*/
 .results {
@@ -173,8 +225,6 @@ header{
 }
 
 /** search formating-**/
-.searchform{
-}
 
 .searchbox{
     width: 100%;
@@ -229,11 +279,17 @@ input{
     width: 95%;
     color:#7EC344;
     display: inline;
+    border-radius: 25px;
 }
 
 .adv{
-    width:95%;
-    margin-bottom: 5px;
+    width: 95%;
+    margin-bottom: 10px;
+    height: 40px;
+    outline: 0;
+    border: 0;
+    padding: 5px;
+    font-size: 17px;
 }
 
 .basicsearch input[type="submit"]:hover {
@@ -266,4 +322,8 @@ input{
 }
 
 .content1{
-    grid-a
+    grid-area: content1;
+    color: #7EC344; /*green */
+	background-color:  #4B382A; /* brown */
+}
+}/*-- end of media query--*/
