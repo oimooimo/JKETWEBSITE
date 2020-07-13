@@ -24,9 +24,9 @@ $has_errors = "no";
                 <form method="post" enctype="multipart/form-data" action= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
 
                 <!-- Book Name (Required) -->
-                <input class="add-field" type="text" name="book_title" value="<?php echo $app_name; ?>" required placeholder="Book Title (required)..."/>
+                <input class="add-field p" type="text" name="book_title" value="<?php echo $app_name; ?>" required placeholder="Book Title (required)..."/>
                 <!-- Author dropdown Name (Required) -->
-                    <select class="adv" required name="author">
+                    <select class="adv p" required name="author">
                     <!-- first/selected option-->
                         <option value="" selected>Author (choose something....)</option>
                     <!-- getting options from the database -->
@@ -43,44 +43,46 @@ $has_errors = "no";
                     </select>
                     
                 <!-- Publisher Name dropdown (Required) -->
-                  <select class="adv" required name="publisher">
-                <!-- first/selected option-->
-                    <option value="" selected>Publisher (choose something....)</option>
-                <!-- getting options from the database -->
-                <?php
-                do{
-                    ?>
-
-                <option value="<?php echo $publisher_rs['PubID'];?>"><?php echo $publisher_rs['Pub'];?></option>
-
-                <?php
-                }
-                while ($publisher_rs=mysqli_fetch_assoc($pub_query))
-                ?>
-                </select>
-                <!-- Item Name dropdown (Required) -->
-                      <select class="adv" required name="item">
+                    <select class="adv p" required name="publisher">
                     <!-- first/selected option-->
-                    <!-- first/selected option-->
-                    <option value="" selected>item type (choose something....)</option>
+                        <option value="" selected>Publisher (choose something....)</option>
                     <!-- getting options from the database -->
                     <?php
                     do{
                         ?>
 
-                    <option value="<?php echo $item_rs['itemID'];?>"><?php echo $item_rs['item'];?></option>
+                    <option value="<?php echo $publisher_rs['PubID'];?>"><?php echo $publisher_rs['Pub'];?></option>
 
                     <?php
                     }
-                    while ($item_rs=mysqli_fetch_assoc($item_query))
+                    while ($publisher_rs=mysqli_fetch_assoc($pub_query))
                     ?>
                     </select>
+                <!-- Item Name dropdown (Required) -->
+                        <select class="adv p" required name="item">
+                        <!-- first/selected option-->
+                        <option value="" selected>item type (choose something....)</option>
+                        <!-- getting options from the database -->
+                        <?php
+                        do{
+                            ?>
+
+                        <option value="<?php echo $item_rs['itemID'];?>"><?php echo $item_rs['item'];?></option>
+
+                        <?php
+                        }
+                        while ($item_rs=mysqli_fetch_assoc($item_query))
+                        ?>
+                        </select>
                 <!-- Published Year (Required) -->
-                <input class="add-field" type="number" name="pubyear" value="<?php echo $pubyear; ?>" required minlength="4" maxlength="4" placeholder="Pub Year (required)..."/>
+                <input class="add-field p" type="number" name="pubyear" value="<?php echo $pubyear; ?>" required minlength="4" maxlength="4" placeholder="Pub Year (required)..."/>
                 
                 <!-- ISBN  (Required) -->
-                <input class="add-field" type="number" name="isbn" value="<?php echo $isbn; ?>" required minlength="13" maxlength="13" minvalue="9780000000000" maxvalue="9800000000000" placeholder="ISBN 13 number"/>
+                <input class="add-field p" type="number" name="isbn" value="<?php echo $isbn; ?>" required minlength="13" maxlength="13" minvalue="9780000000000" maxvalue="9800000000000" placeholder="ISBN 13 number"/>
 
+                <!-- Description  (Required) https://www.dummies.com/web-design-development/site-development/how-to-create-a-drop-down-list-in-an-html5-form/ -->
+                <textarea class="add-field desc p" type="text" name="description" value="<?php echo $description; ?>" required placeholder="Description" rows = "3" cols = "80"></textarea>
+                
                 <!-- SUbmit Button-->
                 <p> 
                 <input class="submit advanced-button" type="submit" value="Submit"/>
