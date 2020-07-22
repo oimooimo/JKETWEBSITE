@@ -30,7 +30,7 @@ $has_errors = "no";
 
 //code executes below when the form is submited
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
+    
      //Get values from form
     $book_title=mysqli_real_escape_string($dbconnect,$_POST['book_title']);
 
@@ -58,7 +58,7 @@ $has_errors = "no";
 
         $publisher = $Pubitem_rs['Pub'];
 
-    } //End AuthorID if
+    } //End PublisherrID if
 
     $ItemID=mysqli_real_escape_string($dbconnect,$_POST['item']);
 
@@ -71,7 +71,7 @@ $has_errors = "no";
 
         $item = $itemitem_rs['Item'];
 
-    } //End AuthorID if
+    } //End ItemID if
 
     $pubyear=mysqli_real_escape_string($dbconnect,$_POST['pubyear']);
     $isbn=mysqli_real_escape_string($dbconnect,$_POST['isbn']);
@@ -82,15 +82,25 @@ $has_errors = "no";
 
     //if there are no errors
     if($has_errors =="no") {
-    }
-            echo "you pushed the button";} //end of button submited code
+           
+        header('location: add_success.php');
+       // add entry to database
+    $addentry_sql="INSERT INTO `book_data` (`ISBN`, `Title`, `AuthorID`, `PubID`, `PubYear`, `ItemID`, `Description`, `CheckIn`) VALUES ('$isbn', '$book_title', '$AuthorID', '$PubID', '$ItemID', '$pubyear', '$description', '$check_in');";
+    $addentry_query=mysqli_query($dbconnect,$addentry_sql);
+
+ 
+    }// end of no errors if
+
+        echo "you pushed the button";
+ }
 ?>
 
         <div class="add-entry">
 
             <h3>Add An Entry</h3>
 
-                <form method="post" enctype="multipart/form-data" action= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
+                <form method="post" enctype="multipart/form-data" action= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" id="form">
+                
 
                 <!-- Book Name (Required) -->
                 <input class="add-field p" type="text" name="book_title" value="<?php echo $app_name; ?>"  placeholder="Book Title (required)..."/>
@@ -196,9 +206,8 @@ $has_errors = "no";
                 <textarea class="add-field desc p" type="text" name="description" value="<?php echo $description; ?>"  placeholder="Description" rows = "3" cols = "80"></textarea>
                 
                 <!-- SUbmit Button-->
-                <p> 
-                <input class="submit advanced-button" type="submit" value="Submit"/>
-                </p>
+
+               <button class="submit tabs advanced-button" type="submit" value="Submit" id="Submit"  > Submit </button>
             
         </form>
         </div>  <!---/addentry-->
