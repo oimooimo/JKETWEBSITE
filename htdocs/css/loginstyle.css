@@ -1,0 +1,248 @@
+/*--general formating--*/
+@import "standard/general.css";
+/*--header--*/
+@import "standard/header.css";
+/*-- navigation--*/
+@import "standard/nav.css";
+/*-- footer --*/
+@import "standard/footer.css";
+/*- mobile general--*/
+@import "standard/mobilestandard.css";
+/*slide*/
+@import "standard/slide.css";
+
+
+/*--- site grid set-up ---*/
+
+@media only screen and (min-width: 999px){/*-- desktop query--*/
+.wrapper{
+	display: grid;
+	grid-template-columns:  500px 1fr;
+	grid-template-rows: min-content;
+	grid-template-areas:
+		"search search"
+        "menu menu"
+		"maincontent maincontent";
+        }
+
+header{
+	grid-area: header;
+}
+
+.search{
+	grid-area: search;
+	background-image: url('image/search.jpg');
+    padding-top: 20px;
+    max-height:100px;
+}
+
+.maincontent{
+    grid-area: maincontent;
+    display: grid;
+    grid-template-columns: 500px 1fr;
+    grid-template-rows: fit;
+    grid-template-areas: "aside content1";
+    height: 125%;
+    overflow-y: scroll;
+}
+
+.aside{
+	grid-area: aside;
+	color: #4B382A; /* brown */
+	background-color: #DFFCBD; /* light green */
+	padding: 50px;
+    overflow: hidden;
+    position: absolute;
+    width: 400px;
+    height: 70vh;
+    padding-top:40px;
+    display: block;
+
+
+}
+
+.menu{
+    grid-area: menu;
+    text-align: right;
+    background-color: #7EC344;
+
+}
+
+.menu img{
+    display:inline !important;
+}
+
+.content1{
+	grid-area: content1;
+	color:#4B382A; /* brown */
+	background-color:  #4B382A; /* brown */
+	min-height: 500px;
+	padding: 50px;
+    display:block;
+
+}
+
+.content1 h2{
+    color:#7EC344;
+}
+
+/*-- slide menu styling --*/
+.aside a{
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	font-size: 50px;
+	line-height:55px;
+    display: block !important;
+
+}
+
+.content1 a{
+    border: 0;
+    background-color:  #DFFCBD; /* light green */
+    outline: 0;
+    font-size: 20px;
+    width: fit-content;
+    display: block;
+    border-radius: 25px;
+    padding:5px;
+}
+/** search formating-**/
+
+.searchbox{
+    width: 100%;
+    height: 100%;
+    font-size: 80px;
+    border: 0;
+    outline:none;
+}
+
+.basicsearch{
+    z-index: 10;
+    width: 75%;
+    position: absolute;
+    top: 450px;
+    height: 150px;
+    left: 10%;
+    display: inline;
+}
+
+input{
+    height:inherit;
+    display:inline-block;
+    box-sizing: border-box;
+    width:20px;
+    color:#4B382A;/*brown*/
+}
+
+.basicsearch input[type="submit"] {
+    position: inherit;
+    background-color: white;
+    border: 0px;
+    outline: none;
+    width: 10%;
+    font-size: 600%;
+    color:#4B382A;/*brown*/
+}
+
+/*-- advanced search formating --*/
+
+.advanced-frame{
+    background-color:#7EC344;/*--darkgreen--*/
+    height: 200x;
+    padding:20px;
+}
+
+.advanced-button{
+    border:0;
+    background-color:#4B382A;
+    outline: 0;
+    margin:auto;
+    font-size: 155%;
+    width: 95%;
+    color:#7EC344;
+    display: inline;
+    border-radius: 25px;
+}
+
+.adv{
+    width: 95%;
+    margin-bottom: 10px;
+    height: 40px;
+    outline: 0;
+    border: 0;
+    padding: 5px;
+    font-size: 17px;
+}
+
+.basicsearch input[type="submit"]:hover {
+    color:#7EC344/*green*/
+}
+
+/* Extra add entry styling */
+
+.add-entry{
+    margin:30px;
+    text-align: block;
+}
+
+.add-field{
+    outline: 0;
+    width: 80%;
+    height: 40px;
+    font-size: 18px;
+    padding: auto;
+    display: block;
+    margin-bottom:10px;
+    font-family: 'Sawarabi Gothic', sans-serif;
+    color: #4B382A !important; 
+
+}
+
+.desc{
+    height:200px;
+}
+
+.add-entry select{
+    width: max-content;
+    display: block;
+    font-size: 20px;
+    color: #4B382A !important; 
+    font-family: 'Sawarabi Gothic', sans-serif;
+
+}
+
+.add-entry .advanced-button{
+    background-color:#DFFCBD;/*light green*/
+    color:#4B382A;/*brown*/
+    width:150px;
+}
+
+@media only screen and (max-width: 999px){
+.wrapper{
+	display: grid;
+	grid-template-columns: 600px;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"mobileheader mobileheader"
+		"search search"
+		"aside aside"
+        "content1 content1"
+		"mobilefooter mobilefooter";	
+}
+
+.search{
+    grid-area: search;
+    height:20%;
+}
+
+.aside{
+    grid-area: aside;
+    height:10%;
+    align-content: center;
+}
+
+.content1{
+    grid-area: content1;
+    color: #7EC344; /*green */
+	background-color:  #4B382A; /* brown */
+}
+}/*-- end of media query--*/
