@@ -28,6 +28,11 @@ $check_in= 1;
 
 $has_errors = "no";
 
+// set up error field colours /visibility (no eroors at first)
+$title_error = $year_error = $isbn_error = $drop_error = $desc_error = "no-error";
+
+$title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok";
+
 //code executes below when the form is submited
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
@@ -80,18 +85,80 @@ $has_errors = "no";
 
     //error cehcking will go here..
 
+    // check book isnt empty
+    if($book_title == ""){
+        $has_errors ="yes";
+        $title_error = "error-text";
+        $title_field="form-error";
+    }
+
+    // check that item isnt empty
+    if($ItemID == "" ){
+        $has_errors ="yes";
+        $item_error = "error-text";
+        $item_field="form-error";
+    }
+
+    //check that pub isnt empty
+    if($PubID == "" ){
+        $has_errors ="yes";
+        $pub_error = "error-text";
+        $pub_field="form-error";
+    }
+    
+    //check that author isnt empty
+    if($AuthorID ==""){
+        $has_errors ="yes";
+        $author_error = "error-text";
+        $author_field="form-error";
+    }
+    
+    // check that Pub Year is a valid reasonable date (no larger than 5 numbers long)
+    if(!ctype_digit($pubyear)||strlen($pubyear)>5||strlen($pubyear)<4){
+        $has_errors ="yes";
+        $date_error = "error-text";
+        $date_field="form-error";
+    }
+    // Check that ISBN is 13 digits long  and remove - from string and check if already exist
+    $isbntest= str_replace("-","","$isbn");
+    $isbncheck=mysqli_query($dbconnect, "SELECT ISBN FROM book_data where ISBN = '$isbntest' ");
+
+    if(!ctype_digit($isbntest)||strlen($isbntest)!=13||mysqli_num_rows($isbncheck) > 0){
+        $has_errors ="yes";
+        $isbn_error = "error-text";
+        $isbn_field="form-error";
+    }
+
+    //Check that Description isnt empty
+    if($description ==""){
+        $has_errors ="yes";
+        $desc_error = "error-text";
+        $desc_field="form-error";
+        $description = "";
+    }
+
     //if there are no errors
     if($has_errors =="no") {
-           
+        
         header('location: add_success.php');
+
+    // hide error text
        // add entry to database
-    $addentry_sql="INSERT INTO `book_data` (`ISBN`, `Title`, `AuthorID`, `PubID`, `PubYear`, `ItemID`, `Description`, `CheckIn`) VALUES ('$isbn', '$book_title', '$AuthorID', '$PubID', '$ItemID', '$pubyear', '$description', '$check_in');";
+    $addentry_sql="INSERT INTO `book_data` (`ISBN`, `Title`, `AuthorID`, `PubID`, `ItemID`, `PubYear`,  `Description`, `CheckIn`) VALUES ('$isbntest', '$book_title', '$AuthorID', '$PubID', '$ItemID', '$pubyear', '$description', '$check_in');";
     $addentry_query=mysqli_query($dbconnect,$addentry_sql);
 
- 
+    // get od fpr mext page
+    $getid_sql = "SELECT * FROM `book_data` WHERE
+     `ISBN` = $isbn
+    ";
+    $getid_query=mysqli_query($dbconnect,$getid_sql);
+    $getid_rs=mysqli_fetch_assoc($getid_query);
+
+    $ISBN = $getid_rs['ISBN'];
+    $_SESSION['ISBN']=$ISBN;
+
     }// end of no errors if
 
-        echo "you pushed the button";
  }
 ?>
 
@@ -99,13 +166,23 @@ $has_errors = "no";
 
             <h3>Add An Entry</h3>
 
-                <form method="post" enctype="multipart/form-data" action= "<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" id="form">
+                <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" id="form">
                 
 
                 <!-- Book Name (Required) -->
-                <input class="add-field p" type="text" name="book_title" value="<?php echo $app_name; ?>"  placeholder="Book Title (required)..."/>
+                    <!--error message-->
+                    <div class="<?php echo $title_error; ?> ">
+                        Please fill in the 'Book Title' field
+                    </div>
+                <input class="add-field <?php echo $title_field;?>  p" type="text" name="book_title" value="<?php echo $book_title; ?>"  placeholder="Book Title (required)..." />
+                
+                
                 <!-- Author dropdown Name (Required) -->
-                    <select class="adv p"  name="author">
+                 <!--error message-->
+                    <div class="<?php echo $author_error; ?> ">
+                        Please select something
+                    </div>
+                    <select class="adv  <?php echo $author_field;?>  p"  name="author">
                     <!-- first/selected option-->
                         <?php
                         if($AuthorID==""){
@@ -136,7 +213,12 @@ $has_errors = "no";
                     </select>
                     
                 <!-- Publisher Name dropdown (Required) -->
-                    <select class="adv p"  name="publisher">
+                  <!--error message-->
+                    <div class="<?php echo $pub_error; ?> ">
+                        Please select something
+                    </div>
+
+                    <select class="adv <?php echo $pub_field;?>  p"  name="publisher">
                     <!-- first/selected option-->
                          <?php
                         if($PubID==""){
@@ -166,10 +248,15 @@ $has_errors = "no";
 
                     </select>
                 <!-- Item Name dropdown (Required) -->
-                        <select class="adv p"  name="item">
+                  <!--error message-->
+                    <div class="<?php echo $item_error; ?> ">
+                        Please select something
+                    </div>
+
+                        <select class="adv <?php echo $item_field;?>  p"  name="item">
                         <!-- first/selected option-->
 
-                        <<?php
+                        <?php
                         if($ItemID==""){
                             ?>
                             <option value="" selected>Item (choose something....)</option>
@@ -196,14 +283,29 @@ $has_errors = "no";
                         while ($item_rs=mysqli_fetch_assoc($item_query))
                         ?>
                         </select>
+
                 <!-- Published Year (Required) -->
-                <input class="add-field p" type="number" name="pubyear" value="<?php echo $pubyear; ?>"  size="4" max="9999" placeholder="Pub Year (required)..."/>
+                 <!--error message-->
+                    <div class="<?php echo $date_error; ?> ">
+                        Are you sure you have a correct date? Please enter the year in a 4 digit format E.g 0000, 1999
+                    </div>
+
+                <input class="add-field <?php echo $date_field; ?>  p" type="number" name="pubyear" value="<?php echo $pubyear; ?>"  placeholder="Pub Year (required)..."/>
                 
                 <!-- ISBN  (Required) -->
-                <input class="add-field p" type="number" name="isbn" value="<?php echo $isbn; ?>"  size="13"  maxlength="13" min="9780000000000" max="9800000000000" placeholder="ISBN 13 number"/>
+                    <!--error message-->
+                    <div class="<?php echo $isbn_error; ?> ">
+                        Please type in a valid ISBN-13 Number or if entering a DVD please enter the JAN code
+                    </div>
+
+                <input class="add-field <?php echo $isbn_field; ?> p" type="text" name="isbn" value="<?php echo $isbn; ?>"  size="13" placeholder="ISBN 13 number"/>
 
                 <!-- Description  (Required) https://www.dummies.com/web-design-development/site-development/how-to-create-a-drop-down-list-in-an-html5-form/ -->
-                <textarea class="add-field desc p" type="text" name="description" value="<?php echo $description; ?>"  placeholder="Description" rows = "3" cols = "80"></textarea>
+                 <!--error message-->
+                    <div class="<?php echo $desc_error; ?> ">
+                        Please type something
+                    </div>
+                <textarea class="add-field <?php echo desc_field?> desc p" type="text" name="description" value="<?php echo $description; ?>"  placeholder="Description" rows = "3" cols = "80"></textarea>
                 
                 <!-- SUbmit Button-->
 
