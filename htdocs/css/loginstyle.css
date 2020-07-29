@@ -143,6 +143,46 @@ input{
     color:#4B382A;/*brown*/
 }
 
+
+}
+@media only screen and (max-width: 999px){
+.wrapper{
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto;
+	grid-template-areas:
+		"search"
+        "menu"
+		"aside"
+        "content1"
+}
+
+.search{
+    grid-area: search;
+    height:15%;
+}
+
+.aside{
+    grid-area: aside;
+    height:10%;
+    align-content: center;
+}
+
+.content1{
+    grid-area: content1;
+    color: #7EC344; /*green */
+	background-color:  #4B382A; /* brown */
+}
+
+.menu{
+grid-area: menu;
+text-align: right;
+background-color: #7EC344;
+height:50px;
+}
+
+}/*-- end of media query--*/
+
 /*-- advanced search formating --*/
 
 .advanced-frame{
@@ -159,6 +199,18 @@ input{
     font-size: 155%;
     width: 95%;
     color:#7EC344;
+    display: inline;
+    border-radius: 25px;
+}
+
+.deletebutton{
+    border:0;
+    background-color:red;
+    outline: 0;
+    margin:auto;
+    font-size: 155%;
+    width: 95%;
+    color:#4B382A;
     display: inline;
     border-radius: 25px;
 }
@@ -216,33 +268,43 @@ input{
     width:150px;
 }
 
-@media only screen and (max-width: 999px){
-.wrapper{
-	display: grid;
-	grid-template-columns: 600px;
-	grid-template-rows: auto;
-	grid-template-areas:
-		"mobileheader mobileheader"
-		"search search"
-		"aside aside"
-        "content1 content1"
-		"mobilefooter mobilefooter";	
+.results {
+    background-color:#DFFCBD; /* light green*/
+    color:#4B382A;/* Brown */
+    padding:20px;
+    margin:20px;
 }
 
-.search{
-    grid-area: search;
-    height:20%;
+/* error css*/
+.form-ok{
+    display: none;
 }
 
-.aside{
-    grid-area: aside;
-    height:10%;
-    align-content: center;
+.form-error{
+    background-color:#ff9e9e; /* weird pinky*/
 }
 
-.content1{
-    grid-area: content1;
-    color: #7EC344; /*green */
-	background-color:  #4B382A; /* brown */
+/* error message*/
+.no-error{
+    display:none;
 }
-}/*-- end of media query--*/
+
+.error-text{
+    color:red;
+}
+
+.loginbutton {
+    position: inherit;
+    background-color: #DFFCBD;
+    color: #4B382A;
+    width: 150px;
+    border: 0px;
+    outline: none;
+    border-radius: 40px;
+    font-size: 40px;
+}
+
+.modalinput{
+    height: 40px;
+    min-width: 40%; 
+}
