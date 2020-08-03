@@ -12,7 +12,7 @@
         </div>
             <div class="menu box">
                         
-                        <a href="login.php"> Logout </a>
+                        <a href="logout.php"> Logout </a>
 
                         <a href="search.php">
                         <img src="image/icon.png" id="myBtn" href="search.php"></img>
