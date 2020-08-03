@@ -7,10 +7,12 @@
     <link rel="stylesheet" href="/css/loginstyle.css">
 <div class="wrapper">
 <div class="search">
-        <img src="image/search.JPG" alt="searchphoto" class="center"/>
+        <img src="image/search.JPG" alt="searchphoto" style="height: 200px;" class="center"/>
 
         </div>
             <div class="menu box">
+                        
+                        <a href="login.php"> Logout </a>
 
                         <a href="search.php">
                         <img src="image/icon.png" id="myBtn" href="search.php"></img>
@@ -34,7 +36,11 @@
                     <?php include 'addentry.php'?>
                     </div>
                     <div class="tabcontent" id="Menu2">
-                        <?php include 'adduser.php'?>
+                        <?php include 'adduser.php' ?>
+                    </div>
+
+                    <div class="tabcontent" id="Menu3">
+                        <?php include 'userlist.php' ?>
                     </div>
                 </div><!-- end of tB CONTENT    -->
 
