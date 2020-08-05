@@ -1,6 +1,9 @@
 <?php 
     session_start();
+    include 'addinfo.php';
     if(($_SESSION["login"]) == "admin"){
+        
+        
     include ("topbit.php");
 ?>
      
@@ -34,9 +37,10 @@
                 <div id="tabcontent">
                     <div class="tabcontent active" id="Menu1">
                     <?php include 'addentry.php'?>
+
                     </div>
                     <div class="tabcontent" id="Menu2">
-                        <?php include 'adduser.php' ?>
+                    <?php include 'adduser.php' ?>
                     </div>
 
                     <div class="tabcontent" id="Menu3">
@@ -55,7 +59,9 @@
     }// end of Admin session if
     else{
         header('Location:login.php');
-         exit;
+         exit();
 
     }
+     
+
     ?>
