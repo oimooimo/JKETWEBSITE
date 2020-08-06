@@ -1,6 +1,8 @@
 <?php 
-    session_start();
+    session_start();    
+
     if(($_SESSION["login"]) == "admin"){
+
     include ("topbit.php");
 ?>
      
@@ -23,7 +25,7 @@
             <div class="aside box">
                 <div id="tabs">
                 <a class="tabs" href="#Menu1">Book Addition</a>
-                <a class="tabs" href="#Menu2">User Addition</a>
+                <a class="tabs" href="admin1.php">User Addition</a>
                 <a class="tabs" href="#Menu3">User List</a>
                 <a class="tabs" href="#Menu4">Delete</a>
 
@@ -35,10 +37,7 @@
                     <div class="tabcontent active" id="Menu1">
                     <?php include 'addentry.php'?>
                     </div>
-                    <div class="tabcontent" id="Menu2">
-                        <?php include 'adduser.php' ?>
-                    </div>
-
+                    
                     <div class="tabcontent" id="Menu3">
                         <?php include 'userlist.php' ?>
                     </div>
@@ -55,7 +54,9 @@
     }// end of Admin session if
     else{
         header('Location:login.php');
-         exit;
+         exit();
 
     }
+     
+
     ?>
