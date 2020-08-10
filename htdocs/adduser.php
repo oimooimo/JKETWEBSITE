@@ -131,7 +131,7 @@ $user_error = $pass_error = $address_error = $name_error  = $account_error = $em
 
     // hide error text
        // add entry to database
-    $adduserentry_sql="INSERT INTO `Users` ( `userID`,`Username`, `Password`, `Account`, `Email`, `Phone`, `Address`, `Romfirst`, `Romlast`, `First`, `Last`) VALUES (NULL, '$Username', '$Password', '$Account', '$Email', '$Phone', '$Addresss', '$Romfirst', '$Romlast', '$First', '$Last');";
+    $adduserentry_sql="INSERT INTO `Users` ( `userID`,`Username`, `Password`, `Account`, `Email`, `Phone`, `Address`, `Romfirst`, `Romlast`, `First`, `Last`) VALUES (NULL, '$Username', '$Password', '$Account', '$Email', '$Phone', '$Address', '$Romfirst', '$Romlast', '$First', '$Last');";
     $adduserentry_query=mysqli_query($dbconnect,$adduserentry_sql);
 
     // get ID fpr mext page
