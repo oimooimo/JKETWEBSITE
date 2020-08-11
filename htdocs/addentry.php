@@ -29,9 +29,9 @@ $check_in= 1;
 $has_errors = "no";
 
 // set up error field colours /visibility (no eroors at first)
-$title_error = $year_error = $isbn_error = $drop_error = $desc_error = "no-error";
+$title_error = $pub_error = $author_error = $item_error =  $date_error = $isbn_error = $drop_error = $desc_error = "no-error";
 
-$title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok";
+$title_error = $pub_error = $author_error = $item_error =  $date_error = $isbn_error = $drop_error = $desc_error = "form-ok";
 
 //code executes below when the form is submited
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -136,7 +136,7 @@ $title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok"
         $desc_field="form-error";
         $description = "";
     }
-
+ 
     //if there are no errors
     if($has_errors =="no") {
         
@@ -164,7 +164,7 @@ $title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok"
 
         <div class="add-entry">
 
-            <h3>Add An Entry</h3>
+            <h3>Add A Book・本いり</h3>
 
                 <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" id="form">
                 
@@ -172,22 +172,22 @@ $title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok"
                 <!-- Book Name (Required) -->
                     <!--error message-->
                     <div class="<?php echo $title_error; ?> ">
-                        Please fill in the 'Book Title' field
+                        Please fill in the 'Book Title' field・本タイトルを入れてください
                     </div>
-                <input class="add-field <?php echo $title_field;?>  p" type="text" name="book_title" value="<?php echo $book_title; ?>"  placeholder="Book Title (required)..." />
+                <input class="add-field <?php echo $title_field;?>  p" type="text" name="book_title" value="<?php echo $book_title; ?>"  placeholder="Book Title・タイトル (required・必要)..." />
                 
                 
                 <!-- Author dropdown Name (Required) -->
                  <!--error message-->
                     <div class="<?php echo $author_error; ?> ">
-                        Please select something
+                        Please select something・何かをえらんでください
                     </div>
                     <select class="adv  <?php echo $author_field;?>  p"  name="author">
                     <!-- first/selected option-->
                         <?php
                         if($AuthorID==""){
                             ?>
-                            <option value="" selected>Author (choose something....)</option>
+                            <option value="" selected>Author・作者 (choose something....)</option>
                         <?php 
                         }
 
@@ -215,7 +215,7 @@ $title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok"
                 <!-- Publisher Name dropdown (Required) -->
                   <!--error message-->
                     <div class="<?php echo $pub_error; ?> ">
-                        Please select something
+                       Please select something・何かをえらんでください
                     </div>
 
                     <select class="adv <?php echo $pub_field;?>  p"  name="publisher">
@@ -223,7 +223,7 @@ $title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok"
                          <?php
                         if($PubID==""){
                             ?>
-                            <option value="" selected>Publisher (choose something....)</option>
+                            <option value="" selected>Publisher・出版社 (choose something....)</option>
                         <?php 
                         }
 
@@ -250,7 +250,7 @@ $title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok"
                 <!-- Item Name dropdown (Required) -->
                   <!--error message-->
                     <div class="<?php echo $item_error; ?> ">
-                        Please select something
+                    Please select something・何かをえらんでください
                     </div>
 
                         <select class="adv <?php echo $item_field;?>  p"  name="item">
@@ -259,7 +259,7 @@ $title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok"
                         <?php
                         if($ItemID==""){
                             ?>
-                            <option value="" selected>Item (choose something....)</option>
+                            <option value="" selected>Item・種類(choose something....)</option>
                         <?php 
                         }
 
@@ -287,29 +287,31 @@ $title_error = $year_error = $isbn_error = $drop_error = $desc_error = "form-ok"
                 <!-- Published Year (Required) -->
                  <!--error message-->
                     <div class="<?php echo $date_error; ?> ">
-                        Are you sure you have a correct date? Please enter the year in a 4 digit format E.g 0000, 1999
+                        Are you sure you have a correct date? Please enter the year in a 4 digit formatE.g 0000, 1999</br>
+                        年を合ってますか　例： 0000, 1999
                     </div>
 
-                <input class="add-field <?php echo $date_field; ?>  p" type="number" name="pubyear" value="<?php echo $pubyear; ?>"  placeholder="Pub Year (required)..."/>
+                <input class="add-field <?php echo $date_field; ?>  p" type="number" name="pubyear" value="<?php echo $pubyear; ?>"  placeholder="Pub Year・出版年(required)..."/>
                 
                 <!-- ISBN  (Required) -->
                     <!--error message-->
                     <div class="<?php echo $isbn_error; ?> ">
-                        Please type in a valid ISBN-13 Number or if entering a DVD please enter the JAN code
+                        Please type in a valid ISBN-13 Number or if entering a DVD please enter the JAN code</br>
+                        ISBN13かDVDのJANコードを入れてください
                     </div>
 
-                <input class="add-field <?php echo $isbn_field; ?> p" type="text" name="isbn" value="<?php echo $isbn; ?>"  size="13" placeholder="ISBN 13 number"/>
+                <input class="add-field <?php echo $isbn_field; ?> p" type="text" name="isbn" value="<?php echo $isbn; ?>"  size="13" placeholder="ISBN 13 number・ISBN 13番号"/>
 
                 <!-- Description  (Required) https://www.dummies.com/web-design-development/site-development/how-to-create-a-drop-down-list-in-an-html5-form/ -->
                  <!--error message-->
                     <div class="<?php echo $desc_error; ?> ">
-                        Please type something
+                    Please select something・何かをえらんでください
                     </div>
-                <textarea class="add-field <?php echo desc_field?> desc p" type="text" name="description" value="<?php echo $description; ?>"  placeholder="Description" rows = "3" cols = "80"></textarea>
+                <textarea class="add-field <?php echo desc_field?> desc p" type="text" name="description" value="<?php echo $description; ?>"  placeholder="Description・描写" rows = "3" cols = "80"></textarea>
                 
                 <!-- SUbmit Button-->
 
-               <button class="submit tabs advanced-button" type="submit" value="Submit" id="Submit"  > Submit </button>
+               <button class="submit tabs advanced-button" type="submit" value="Submit" id="Submit"  > Submit・出す </button>
             
         </form>
         </div>  <!---/addentry-->
