@@ -1,16 +1,18 @@
-<?php include ("topbit.php");
+<?php
+session_start();
+include ("topbit.php");
 
-    // retrieves information...
-    $userID;= $_SESSION['userID'];
+// retrieves information...
+$userID = $_SESSION['userID'];
 
-    $find_sql = "SELECT * FROM `Users`
-    ";
-    $find_query = mysqli_query($dbconnect, $find_sql);
-    $find_rs = mysqli_fetch_assoc($find_query);
-    $count = mysqli_num_rows($find_query);
+$find_usersql = "SELECT * FROM `Users`
+WHERE `userID` = $userID
+";
+$find_userquery = mysqli_query($dbconnect, $find_usersql);
+$find_userrs = mysqli_fetch_assoc($find_userquery);
+$usercount = mysqli_num_rows($find_userquery);
     
-
-    ?>
+?>
     <link rel="stylesheet" href="css/loginstyle.css">
 <div class="wrapper">
 <div class="search">
@@ -32,14 +34,17 @@
             <div class="content1 box">
                 <div id="tabcontent" class= "modalmain">
                     <div class="active" id="Menu1">
-                <h2>Congratulations</h2>
+                <h2>Congratulations おめでとう</h2>
                  You have succesfully submited an entry into the Database.
+                 </br>
+                エントリーをデータベースに送信しました
                  <?php include ("userresults.php")
                  ?>
-                <a href="admin.php">Please click here to go back</a> 
+                <a href="admin.php">Please click here to go back <br> 戻るにはここをクリックしてください</a> 
             </div> <!-- end of content1 -->
 
         </div> <!-- end of main-->
     </div>
 
 </body>
+</html>
