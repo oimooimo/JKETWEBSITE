@@ -44,7 +44,7 @@
         <header class="box">
 
             <div class="button_group box">
-				<a href="donation.php" class="button_1">ENGLISH</a>
+				<a href="advanced.php" class="button_1">ENGLISH</a>
 				<a href="jp_donation.php" class="button_2">ご寄付</a>
 				<a href="jp_volunteerform.php" class="button_2">ボランティア募集！</a>
 			</div><!-- end of button_group-->
@@ -66,54 +66,23 @@
 		    </form>	
         </div>
 		
-       <div class="tab box">
-
-            <!-- FROM W3 SCHOOLS https://www.w3schools.com/howto/howto_css_modals.asp -->
-            <!-- Trigger/Open The Modal -->
-            <img src="image/icon.png" id="myBtn"></img>
-
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-
-                <div class="modalheader">
-                    <span class="close">&times;</span>
-                </div>
-
-                <div class="modalaside">
-                d
-                </div>
-
-                <div class= "modalmain">
-                    <p>Some text in the Modal..</p>
-                </div>
-           
-                </div><!-- MODAL CONTENT-->
-
-            </div><!--/MYMODAL-->
-        
-        </div> <!-- end of tab-->
-
-        <!-- javascript link for modal -->
-        <script src="java/modal.js"></script>
+      <?php include "modal.php" ?>
 
         <div class="maincontent">
             <div class="aside box">
-            <h2>Advanced Search</h2>
+            <h2>アドバンストサーチ</h2>
 
             <div class="advanced-frame">
             
             <form class="searchform" method="post" action="advanced.php" enctype="multipart/form-data">
 
-            <input class="adv" type="text" name="book_title" size="40" value="" placeholder="Book Title"/>
+            <input class="adv" type="text" name="book_title" size="40" value="" placeholder="題名"/>
 
             <input class="adv" type="text" name="ISBN_num" size="40" value="" placeholder="ISBN-13 e.g 980000000000000"/>
 
             <!--genre dropdown-->
             <select class="search adv" name="author_name">
-            <option value="" disabled selected>Author</option>
+            <option value="" disabled selected>作者</option>
             <?php 
             $Author_sql="SELECT * FROM `Author` ORDER BY `Author`.`Author` ASC";
             $Author_query = mysqli_query($dbconnect, $Author_sql);
@@ -133,7 +102,7 @@
  
             <!--Publisher dropdown-->
             <select class="search adv" name="pub_name">
-            <option value="" disabled selected>Publisher</option>
+            <option value="" disabled selected>出版社</option>
             <?php 
             $Pub_sql="SELECT * FROM `Publisher` ORDER BY `Publisher`.`Pub` ASC ";
             $Pub_query = mysqli_query($dbconnect, $Pub_sql);
@@ -153,7 +122,7 @@
 
             <!--Item dropdown-->
             <select class="search adv" name="item_type">
-            <option value="" disabled selected>Item Type</option>
+            <option value="" disabled selected>種類</option>
             <?php 
             $Item_sql="SELECT * FROM `Item` ORDER BY `Item`.`Item` ASC";
             $Item_query = mysqli_query($dbconnect, $Item_sql);
@@ -171,11 +140,11 @@
             </select>
             <!--/Item dropdown-->
 
-            <input class="adv" type="text" name="PubYear" size="40" value="" placeholder="Year Published"/>
+            <input class="adv" type="text" name="PubYear" size="40" value="" placeholder="刊年"/>
 
             <!--check box for check in-->
-            <input class="adv-txt" type="checkbox" name="check_in" value="0">Currently Available
-            <input class="submit advanced-button" type="submit" name="advanced" value="Search &#8981;" />
+            <input class="adv-txt" type="checkbox" name="check_in" value="0">借りる
+            <input class="submit advanced-button" type="submit" name="advanced" value="探す &#8981;" />
             </form>
             </div> <!--advanced frame-->
             </div> <!--/aside box-->
