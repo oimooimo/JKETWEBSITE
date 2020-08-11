@@ -123,7 +123,6 @@ $user_error = $pass_error = $address_error = $name_error  = $account_error = $em
         $jpn_error = "error-text";
         $jpn_field="form-error";
     }
-    
 
     //if there are no errors
     if($has_usererrors =="no") {
@@ -146,11 +145,10 @@ $user_error = $pass_error = $address_error = $name_error  = $account_error = $em
     }// end of no errors if
 
  }
-?> 
-
+?>
         <div class="add-entry">
 
-            <h3>Add An Entry</h3>
+            <h3>Add A User・ユーザーいり</h3>
 
                 <form method="post" enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" id="form">
                 
@@ -158,69 +156,72 @@ $user_error = $pass_error = $address_error = $name_error  = $account_error = $em
                 <!-- User Name (Required) -->
                     <!--error message-->
                     <div class="<?php echo $user_error; ?> ">
-                       Please enter a username!
+                       Please enter a username!ユーザーネームをえらんでください！
                     </div>
                     <!--error message-->
                     <div class="<?php echo $user_dupeerror; ?> ">
-                        This username already exists, please enter a different username!
+                        This username already exists, please enter a different username!そのユーザネームがもう使ってあります。違うのネームをえらんでください！
                     </div>
-                <input class="add-field <?php echo $user_field;?>  p" type="text" name="Username" value="<?php echo $Username; ?>"  placeholder="Username (required)..." />
+                <input class="add-field <?php echo $user_field;?>  p" type="text" name="Username" value="<?php echo $Username; ?>"  placeholder="Username・ユーザーネーム(required・必要)..." />
                 
                  <!-- Password (Required) -->
                     <!--error message-->
                     <div class="<?php echo $pass_error; ?> ">
-                        Please fill in the Password field!
+                        Please fill in the Password field!パースワードを入れてください！
                     </div>
-                <input class="add-field <?php echo $pass_field;?>  p" type="text" name="Password" value="<?php echo $Password; ?>"  placeholder="Password (required)..." />
+                <input class="add-field <?php echo $pass_field;?>  p" type="text" name="Password" value="<?php echo $Password; ?>"  placeholder="Password・パースワード (required・必要)..." />
 
                  <!-- Accounttype (Required) -->
                     <!--error message-->
                     <div class="<?php echo $account_error; ?> ">
-                        Please fill in the 'Book Title' field
+                        Please select an account type </br>
+                        ください
                     </div>
 
                 <select class="adv <?php echo $account_field;?>  p" name="Account" value="<?php echo $Account; ?>" >
-                    <option value="">Select Account Type...</option>
-                    <option value="1">Admin</option>
-                    <option value="2">Regular Member</option>
-                    <option value="3">Playgroup Member</option>
+                    <option value="">Select Account Type・アカウント種類を選んで...</option>
+                    <option value="1">Admin・アドミン</option>
+                    <option value="2">Regular Member・普通うのメンバー</option>
+                    <option value="3">Playgroup Member・プレイグループメンバー</option>
                 </select>
 
                  <!-- Email (Required) -->
                     <!--error message-->
                     <div class="<?php echo $email_error; ?> ">
-                        Please fill in the Email
+                        Please fill in the Email・メールアドレスを入れてください
                     </div>
-                <input class="add-field <?php echo $email_field;?>  p" type="text" name="Email" value="<?php echo $Email; ?>"  placeholder="Email (required)..." />
+                <input class="add-field <?php echo $email_field;?>  p" type="text" name="Email" value="<?php echo $Email; ?>"  placeholder="Email ・メールアドレス(required・必要)..." />
 
                  <!-- Phone Number (Required) -->
                     <!--error message-->
                     <div class="<?php echo $phone_error; ?> ">
-                        Please fill in the phone number' field
+                        Please fill in the phone number・電話番号を入れてください
                     </div>
-                <input class="add-field <?php echo $user_field;?>  p" type="text" name="Phone" value="<?php echo $Phone; ?>"  placeholder="Phone number (required)..." />
+                <input class="add-field <?php echo $user_field;?>  p" type="text" name="Phone" value="<?php echo $Phone; ?>"  placeholder="Phone number・電話番号 (required・必要)..." />
 
                  <!--Address (Required) -->
                     <div class="<?php echo $address_error; ?> ">
-                        Please enter and Address
+                        Please enter and Address・住所を入れてください
                     </div>
-                <textarea class="add-field <?php echo address_field?> address p" type="text" name="Address" value="<?php echo $Address; ?>"  placeholder="Address" rows = "2" cols = "40"></textarea>
+                <textarea class="add-field <?php echo address_field?> address p" type="text" name="Address" value="<?php echo $Address; ?>"  placeholder="Address・住所" rows = "2" cols = "40"></textarea>
                     
                     
                 <div>
                  <!-- Romfirst (Required) -->
                     <!--error message-->
                     <div class="<?php echo $rom_error; ?> ">
-                        Please enter a English First name
+                        Please enter a English First name</br>
+                        ローマ字ファーストネームを入れてください
                     </div>
-                <input class="add-field  add-rom <?php echo $rom_field;?>  p" type="text" name="Romfirst" value="<?php echo $Romfirst; ?>"  placeholder="English first name (required)..." />
+                <input class="add-field  add-rom <?php echo $rom_field;?>  p" type="text" name="Romfirst" value="<?php echo $Romfirst; ?>"  placeholder="English first name・ローマ字ファーストネー・ (required)..." />
 
                  <!-- Romlast (Required) -->
                     <!--error message-->
                     <div class="<?php echo $rom_error; ?> ">
-                        Please enter a English Last name
+                        Please enter a English Last name</br>
+                        ローマ字ラストネームを入れてください
                     </div>
-                <input class="add-field add-rom <?php echo $rom_field;?>  p" type="text" name="Romlast" value="<?php echo $Romlast; ?>"  placeholder="English last name (required)..." />
+                <input class="add-field add-rom <?php echo $rom_field;?>  p" type="text" name="Romlast" value="<?php echo $Romlast; ?>"  placeholder="English last name・ ローマ字ラストネーム・ (required)..." />
                 </div>
                 
                 
@@ -228,21 +229,23 @@ $user_error = $pass_error = $address_error = $name_error  = $account_error = $em
                  <!-- First (Required) -->
                     <!--error message-->
                     <div class="<?php echo $jpn_error; ?> ">
-                        Please enter a Japanese First name
+                        Please enter a Japanese First name</br>
+                        ファーストネームを入れてください
                     </div>
-                <input class="add-field add-jpn <?php echo $jpn_field;?>  p" type="text" name="First" value="<?php echo $First; ?>"  placeholder="Japanese first name(required)..." />
+                <input class="add-field add-jpn <?php echo $jpn_field;?>  p" type="text" name="First" value="<?php echo $First; ?>"  placeholder="Japanese first name・ファーストネーム・(required)..." />
 
                  <!-- Last (Required) -->
                     <!--error message-->
                     <div class="<?php echo $jpn_error; ?> ">
-                        Please enter a Japanese Last name
+                        Please enter a Japanese Last name</br>
+                        ラストネームを入れてください
                     </div>
-                <input class="add-field add-jpn <?php echo $jpn_field;?>  p" type="text" name="Last" value="<?php echo $Last; ?>"  placeholder="Japanese Last name(required)..." />
+                <input class="add-field add-jpn <?php echo $jpn_field;?>  p" type="text" name="Last" value="<?php echo $Last; ?>"  placeholder="Japanese Last name・ラストネーム(required)..." />
                 <!-- SUbmit Button-->
                 </div>
 
                 
-               <button class="submit tabs advanced-button" type="submit" value="submituser" name="submituser"> Submit </button>
+               <button class="submit tabs advanced-button" type="submit" value="submituser" name="submituser"> Submit・出す </button>
             
         </form>
         </div>  <!---/addentry-->
