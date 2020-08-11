@@ -240,7 +240,7 @@ input{
 @media only screen and (max-width: 999px){
 .wrapper{
 	display: grid;
-	grid-template-columns: 600px;
+	grid-template-columns: auto;
 	grid-template-rows: auto;
 	grid-template-areas:
 		"mobileheader mobileheader"
@@ -248,7 +248,8 @@ input{
         "tab tab"
 		"aside aside"
         "content1 content1"
-		"mobilefooter mobilefooter";	
+		"mobilefooter mobilefooter";
+        margin: auto;	
 }
 
 .search{
@@ -274,5 +275,7 @@ input{
     background-color: #7EC344;
 }
 }/*-- end of media query--*/
+
+
 
 
