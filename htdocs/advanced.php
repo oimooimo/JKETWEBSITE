@@ -37,14 +37,14 @@
 
     <link rel="stylesheet" href="css/searchstyle.css">
 
- <?php include 'jp_regheader.php' ?>
+ <?php include 'regheader.php' ?>
   <div> <a href="search.php" class="button_1 box">ENGLISH</a></div>
     </div><!--closing for mobileheader--> 
         
         <header class="box">
 
            <div class="button_group box">
-				<a href="/jp_contact.php" class="button_1">日本語</a>
+				<a href="/jp_advanced.php" class="button_1">日本語</a>
 				<a href="/donation.php" class="button_2">Donate!</a>
 				<a href="/volunteerform.php" class="button_2">Volunteer!</a>
 			</div><!-- end of button_group-->
@@ -58,7 +58,7 @@
 		<div class="search">
 			<img src="image/search.JPG" alt="searchphoto" class="center"/>
 
-            <form class="searchform" method="post" action="jp_showall.php" enctype="multipart/form-data">
+            <form class="searchform" method="post" action="showall.php" enctype="multipart/form-data">
                 <div class="basicsearch">
                 <input class="searchbox" type="text" name="searchbasic" size="80" value="" required placeholder=""/>
                 <input class="submit" type="submit" name="findsearch" value="&#8981;"/>
@@ -66,38 +66,7 @@
 		    </form>	
         </div>
 		
-       <div class="tab box">
-
-            <!-- FROM W3 SCHOOLS https://www.w3schools.com/howto/howto_css_modals.asp -->
-            <!-- Trigger/Open The Modal -->
-            <img src="image/icon.png" id="myBtn"></img>
-
-            <!-- The Modal -->
-            <div id="myModal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-
-                <div class="modalheader">
-                    <span class="close">&times;</span>
-                </div>
-
-                <div class="modalaside">
-                d
-                </div>
-
-                <div class= "modalmain">
-                    <p>Some text in the Modal..</p>
-                </div>
-           
-                </div><!-- MODAL CONTENT-->
-
-            </div><!--/MYMODAL-->
-        
-        </div> <!-- end of tab-->
-
-        <!-- javascript link for modal -->
-        <script src="java/modal.js"></script>
+      <?php include "modal.php" ?>
 
         <div class="maincontent">
             <div class="aside box">
@@ -183,7 +152,7 @@
             <div class="content1 box">
                 <h2> Results </h2>
 
-               <?php include 'jp_results.php'?>
+               <?php include 'results.php'?>
 
             </div> <!-- end of content1 -->
 
